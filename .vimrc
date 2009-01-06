@@ -19,13 +19,13 @@
 
 " tab spacing
 :set shiftwidth=4
-:set tabstop=4
-:set noexpandtab
+":set tabstop=4
+":set noexpandtab
 
-:autocmd FileType xhtml,htm,html,xml,xml2 set shiftwidth=2 tabstop=2
+:autocmd FileType xhtml,htm,html,xml,xml2,ant set shiftwidth=2 tabstop=2
 
 " mouse
-:set mouse=v
+:set mouse=nv
 :set mousehide
 
 " easy comments
