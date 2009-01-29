@@ -38,11 +38,6 @@ vnoremap  :s/^\/\///
 :map <F7> :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
 
-" Matching Parenthesis highlighting
-:hi MatchParen ctermbg=black
-:hi Pmenu ctermbg=black
-:hi PmenuSel ctermfg=black ctermbg=blue
-
 " Java shit
 let java_allow_cpp_keywords=1
 let java_minlines=50
@@ -55,4 +50,30 @@ if has("autocmd")
   \   exe "normal! g'\"" |
   \ endif
 endif
+
+
+
+""""""""""
+" Colors "
+""""""""""
+" search and incremental search colors
+:hi clear Search
+:hi Search term=standout ctermfg=yellow term=underline cterm=underline
+:hi clear IncSearch
+:hi IncSearch term=standout ctermfg=yellow term=underline cterm=underline
+
+" Matching Parenthesis highlighting
+:hi MatchParen ctermbg=black
+:hi Pmenu ctermbg=black
+:hi PmenuSel ctermfg=black ctermbg=blue
+
+" spell checking
+:hi clear SpellBad
+:hi SpellBad term=standout ctermfg=darkred term=underline cterm=underline
+:hi clear SpellCap
+:hi SpellCap term=standout ctermfg=lightgreen term=underline cterm=underline
+:hi clear SpellRare
+:hi SpellRare term=standout ctermfg=blue term=underline cterm=underline
+:hi clear SpellLocal
+:hi SpellLocal term=standout ctermfg=cyan term=underline cterm=underline
 
