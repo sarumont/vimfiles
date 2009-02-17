@@ -20,9 +20,11 @@
 " tab spacing
 :set shiftwidth=4
 :set tabstop=4
-:set expandtab
-":set tabstop=4
-":set noexpandtab
+if $USER == "richard"
+    :set expandtab
+else 
+    :set noexpandtab
+endif
 
 :autocmd FileType xhtml,htm,html,xml,xml2,ant set shiftwidth=2 tabstop=2
 
@@ -60,7 +62,7 @@ endif
 """"""""""
 " search and incremental search colors
 :hi clear Search
-:hi Search term=standout ctermfg=yellow term=underline cterm=underline
+:hi Search term=standout ctermfg=yellow cterm=underline,bold
 :hi clear IncSearch
 :hi IncSearch term=standout ctermfg=yellow term=underline cterm=underline
 
