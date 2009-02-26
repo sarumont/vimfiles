@@ -1,5 +1,5 @@
 " misc
-":set t_Co=256
+:set t_Co=256
 :syntax on
 :filetype on
 :set viminfo='20,\"50
@@ -19,12 +19,15 @@
 
 " tab spacing
 :set shiftwidth=4
-:set tabstop=4
+":set tabstop=4
 if $USER == "richard"
     :set expandtab
 else 
     :set noexpandtab
 endif
+
+:set softtabstop=4
+:set noexpandtab
 
 :autocmd FileType xhtml,htm,html,xml,xml2,ant set shiftwidth=2 tabstop=2
 
