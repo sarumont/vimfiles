@@ -26,6 +26,15 @@ else
     :set noexpandtab
 endif
 
+" Java shit
+let java_allow_cpp_keywords=1
+let java_highlight_all=1
+let java_minlines=50
+:hi javaNumber ctermfg=198
+:hi javaC_JavaLang ctermfg=229
+:hi javaR_JavaLang ctermfg=229
+:hi javaLangObject ctermfg=252
+
 :set softtabstop=4
 :set noexpandtab
 
@@ -45,9 +54,6 @@ vnoremap  :s/^\/\///
 :map <F7> :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
 
-" Java shit
-let java_allow_cpp_keywords=1
-let java_minlines=50
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
