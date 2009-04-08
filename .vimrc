@@ -19,12 +19,12 @@
 
 " tab spacing
 :set shiftwidth=4
-":set tabstop=4
-if $USER == "richard"
-    :set expandtab
-else 
-    :set noexpandtab
-endif
+:set tabstop=4
+:set noexpandtab
+"if $USER == "richard"
+    ":set expandtab
+"else 
+"endif
 
 " Java shit
 let java_allow_cpp_keywords=1
@@ -34,6 +34,11 @@ let java_minlines=50
 :hi javaC_JavaLang ctermfg=229
 :hi javaR_JavaLang ctermfg=229
 :hi javaLangObject ctermfg=252
+
+" custom classes
+:hi imClass ctermfg=229
+:hi imExceptions ctermfg=204
+:hi memVars ctermfg=215
 
 :set softtabstop=4
 :set noexpandtab
