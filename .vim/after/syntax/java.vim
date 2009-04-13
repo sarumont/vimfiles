@@ -1,4 +1,4 @@
-syn cluster synExcludes contains=javaComment,javaLineComment,javaDocComment,javaCommentTitle,javaString,javaDocTags,javaDocSeeTag,javaDocParam
+syn cluster synExcludes contains=javaComment,javaLineComment,javaDocComment,javaCommentTitle,javaString,javaDocTags,javaDocSeeTag,javaDocParam,javaAnnotation
 
 " exceptions
 syn match imExceptions /\<\w*Exception\>/ containedin=ALLBUT,@synExcludes
