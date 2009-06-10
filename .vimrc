@@ -30,6 +30,8 @@
 let java_allow_cpp_keywords=1
 let java_highlight_all=1
 let java_minlines=50
+
+" JDK highlights
 :hi javaNumber ctermfg=198
 :hi javaC_JavaLang ctermfg=229
 :hi javaR_JavaLang ctermfg=229
@@ -38,12 +40,26 @@ let java_minlines=50
 " custom classes
 :hi imClass ctermfg=229
 :hi imExceptions ctermfg=204
-:hi memVars ctermfg=215
+:hi memVars ctermfg=243
+
+"
+" FG on these isn't necessarily correct - and the BG sucks with a /* */ or javadoc comment
+"
+"hi javaComment ctermfg=4 ctermbg=234
+"hi javaCommentStar ctermfg=4 ctermbg=234
+"hi javaLineComment ctermfg=4 ctermbg=234
+"hi javaDocComment ctermfg=4 ctermbg=234
+"hi javaCommentTitle ctermfg=4 ctermbg=234
+"hi javaDocTags ctermfg=4 ctermbg=234
+"hi javaDocParam ctermfg=4 ctermbg=234
+"hi javaDocSeeTag ctermfg=4 ctermbg=234
+"hi javaDocSeeTagParam ctermfg=4 ctermbg=234
+
 
 :set softtabstop=4
 :set noexpandtab
 
-:autocmd FileType xhtml,htm,html,xml,xml2,ant set shiftwidth=2 tabstop=2
+:autocmd FileType xhtml,htm,html,dtd,xml,xml2,ant set shiftwidth=2 tabstop=2
 
 " mouse
 :set mouse=nv
