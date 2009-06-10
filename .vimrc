@@ -5,7 +5,8 @@
 :set viminfo='20,\"50
 :set formatoptions=croql
 :set autowrite
-:set textwidth=80
+:set textwidth=100
+:set nocompatible
 :set nohlsearch
 :set incsearch
 :set title
@@ -55,25 +56,57 @@ let java_minlines=50
 "hi javaDocSeeTag ctermfg=4 ctermbg=234
 "hi javaDocSeeTagParam ctermfg=4 ctermbg=234
 
-
 :set softtabstop=4
 :set noexpandtab
 
+" misc
+set wildmenu
 :autocmd FileType xhtml,htm,html,dtd,xml,xml2,ant set shiftwidth=2 tabstop=2
 
 " mouse
 :set mouse=nv
 :set mousehide
 
+" keymappings
+
 " easy comments
 vnoremap  :s/^/\/\//
 vnoremap  :s/^\/\///
- 
-" utility functions
+
+:cmap bc Bclose
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
 :map <F7> :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
+
+set laststatus=0
+
+" tags
+set tags=~/.tags
+
+" folding 
+"set nofen
+"set fdl=1
+function! JavaFold()
+ setl foldmethod=syntax
+ setl foldlevelstart=1
+ syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+ syn match foldImports /\(\n\?import.\+;\n\)\+/ transparent fold
+
+ function! FoldText()
+   return substitute(getline(v:foldstart), '{.*', '{...}', '')
+ endfunction
+ setl foldtext=FoldText()
+endfunction
+"au FileType java call JavaFold()
+"au FileType java setl fen
+"hi Folded ctermfg=238 ctermbg=234
+
+
+" vim-outliner
+" TODO - try to switch back to old FT? 
+"  let old_ft=:filetype 
+:map <F12> :set ft=vo_base<cr>
 
 
 " Only do this part when compiled with support for autocommands
@@ -84,8 +117,6 @@ if has("autocmd")
   \   exe "normal! g'\"" |
   \ endif
 endif
-
-
 
 """"""""""
 " Colors "
@@ -111,3 +142,4 @@ endif
 :hi clear SpellLocal
 :hi SpellLocal term=standout ctermfg=cyan term=underline cterm=underline
 
+filetype plugin indent on
