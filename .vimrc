@@ -73,13 +73,25 @@ set wildmenu
 vnoremap  :s/^/\/\//
 vnoremap  :s/^\/\///
 
-:cmap bc Bclose
+":cmap bc Bclose
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
 :map <F7> :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
 
 set laststatus=0
+
+" NERDTree
+:map <C-K> :NERDTreeToggle<cr>
+
+:map <C-Tab> :tabnext<cr>
+:map <C-S-Tab> :tabprev<cr>
+
+" Status line
+:set statusline=%F%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]
+:set laststatus=2
+:hi StatusLine ctermfg=black ctermbg=181
+:hi StatusLineNC ctermfg=black ctermbg=243
 
 " tags
 set tags=~/.tags
