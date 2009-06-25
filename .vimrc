@@ -90,8 +90,8 @@ set laststatus=0
 " Status line
 :set statusline=%F%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]
 :set laststatus=2
-:hi StatusLine ctermfg=black ctermbg=181
-:hi StatusLineNC ctermfg=black ctermbg=243
+:hi StatusLine cterm=none ctermfg=186 ctermbg=236
+:hi StatusLineNC cterm=none ctermfg=108 ctermbg=236
 
 " tags
 set tags=~/.tags
