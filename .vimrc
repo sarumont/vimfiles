@@ -5,8 +5,8 @@
 :set viminfo='20,\"50
 :set formatoptions=croql
 :set autowrite
-:set textwidth=100
 :set nocompatible
+:set textwidth=100
 :set nohlsearch
 :set incsearch
 :set title
@@ -88,7 +88,7 @@ set laststatus=0
 :map <C-S-Tab> :tabprev<cr>
 
 " Status line
-:set statusline=%F%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]
+:set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]
 :set laststatus=2
 :hi StatusLine cterm=none ctermfg=186 ctermbg=236
 :hi StatusLineNC cterm=none ctermfg=108 ctermbg=236
