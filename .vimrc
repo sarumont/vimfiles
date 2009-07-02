@@ -27,6 +27,9 @@
 "else 
 "endif
 
+" SQL shit
+let g:omni_sql_no_default_maps = 1
+
 " Java shit
 let java_allow_cpp_keywords=1
 let java_highlight_all=1
