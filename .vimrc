@@ -46,6 +46,12 @@ let java_minlines=50
 :hi imExceptions ctermfg=204
 :hi memVars ctermfg=243
 
+" window navigation
+:nmap <silent> <C-h> :wincmd h<CR>
+:nmap <silent> <C-j> :wincmd j<CR>
+:nmap <silent> <C-k> :wincmd k<CR>
+:nmap <silent> <C-l> :wincmd l<CR>
+
 "
 " FG on these isn't necessarily correct - and the BG sucks with a /* */ or javadoc comment
 "
@@ -85,7 +91,7 @@ vnoremap  :s/^\/\///
 set laststatus=0
 
 " NERDTree
-:map <C-K> :NERDTreeToggle<cr>
+:map <C-I> :NERDTreeToggle<cr>
 
 :map <C-Tab> :tabnext<cr>
 :map <C-S-Tab> :tabprev<cr>
