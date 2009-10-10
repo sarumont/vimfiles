@@ -11,3 +11,6 @@ syn match imClass /\<[A-Z][a-z0-9_]\w*\>/ containedin=ALLBUT,@synExcludes
 
 " _memberVariables
 syn match memVars /\<_[a-z0-9A-Z]*\>/ containedin=ALLBUT,@synExcludes
+
+syn keyword hacks HACK containedin=javaComment,javaLineComment,javaDocComment,javaCommentTitle
+hi link hacks Todo
