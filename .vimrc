@@ -40,6 +40,10 @@ let java_minlines=50
 :hi javaC_JavaLang ctermfg=229
 :hi javaR_JavaLang ctermfg=229
 :hi javaLangObject ctermfg=252
+:hi javaStatement ctermfg=202
+:hi javaExceptions ctermfg=124
+:hi javaConditional ctermfg=127
+:hi javaRepeat ctermfg=127
 
 " custom classes
 :hi imClass ctermfg=229
