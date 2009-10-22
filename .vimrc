@@ -44,6 +44,8 @@ let java_minlines=50
 :hi javaExceptions ctermfg=124
 :hi javaConditional ctermfg=127
 :hi javaRepeat ctermfg=127
+:hi javaScopeDecl ctermfg=41
+:hi javaType ctermfg=35
 
 " custom classes
 :hi imClass ctermfg=229
