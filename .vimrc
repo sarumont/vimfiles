@@ -9,10 +9,20 @@
 :set textwidth=100
 :set nohlsearch
 :set incsearch
-:set title
 :set showmatch
 :set matchtime=1
 :set bs=2
+
+" title string
+set titlestring=vim\ %<%F%(\ %)%m%h%w%=%l/%L-%P
+set titlelen=70
+if &term == "screen"
+	set t_ts=k
+	set t_fs=\
+endif
+if &term == "screen" || &term == "xterm" 
+	set title
+endif
 
 " Indention
 set autoindent
@@ -21,6 +31,7 @@ filetype plugin indent on
 " tab spacing
 :set shiftwidth=4
 :set tabstop=4
+:set softtabstop=4
 :set noexpandtab
 "if $USER == "richard"
     ":set expandtab
@@ -71,12 +82,9 @@ let java_minlines=50
 "hi javaDocSeeTag ctermfg=4 ctermbg=234
 "hi javaDocSeeTagParam ctermfg=4 ctermbg=234
 
-:set softtabstop=4
-:set noexpandtab
-
 " misc
 set wildmenu
-:autocmd FileType xhtml,htm,html,dtd,xml,xml2,ant set shiftwidth=2 tabstop=2
+:autocmd FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
 
 " mouse
 :set mouse=nv
@@ -107,6 +115,13 @@ set laststatus=0
 :set laststatus=2
 :hi StatusLine cterm=none ctermfg=186 ctermbg=236
 :hi StatusLineNC cterm=none ctermfg=108 ctermbg=236
+
+
+" current/cursor line
+if v:version > 700
+	"set cursorline
+	"hi CursorLine cterm=none ctermbg=233
+endif
 
 " tags
 set tags=~/.tags
@@ -201,4 +216,37 @@ endfunction
 au BufRead,BufNewFile *.lzx call TextEnableCodeSnip( 'javascript', '<!\[CDATA\[', '\]\]>', 'SpecialComment' )
 
 au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
+"au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx set noexpandtab
+au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :exec CodeInit()
 
+fu! CodeInit()
+	set noexpandtab
+	set shiftwidth=4
+	set tabstop=4
+	set softtabstop=4
+endfu
+
+" JavaBrowser
+au VimEnter * let JavaBrowser_Ctags_Cmd="/usr/local/bin/exctags"
+au VimEnter * let Javabrowser_Use_Icon=1
+
+" omnicomplete (javacomplete)
+imap <Nul> <Space>
+autocmd Filetype java let g:vjde_lib_path='/home/sarumont/nuvos/nuvos.jar'
+autocmd Filetype art set expandtab
+
+"define :HighlightLongLines command to highlight the offending parts of
+"lines that are longer than the specified length (defaulting to 80)
+
+command! -nargs=? HighlightLongLines call s:HighlightLongLines('<args>')
+function! s:HighlightLongLines(width)
+	let targetWidth = a:width != '' ? a:width : 99
+	if targetWidth > 0
+		exec 'match Todo /\%>' . (targetWidth) . 'v/'
+	else
+		echomsg "Usage: HighlightLongLines [natural number]"
+	endif
+endfunction
+:map <F4> :HighlightLongLines<cr>
+
+let NERDTreeWinSize=42
