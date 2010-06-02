@@ -1,8 +1,9 @@
 " misc
+:autocmd!
 :set t_Co=256
 :syntax on
 :filetype on
-:set viminfo='20,\"50
+:set viminfo='100,\"50,:20
 :set formatoptions=croql
 :set autowrite
 :set nocompatible
@@ -27,6 +28,11 @@ endif
 " Indention
 set autoindent
 filetype plugin indent on
+
+:map \s :silent !screener.sh<CR>;
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
 " tab spacing
 :set shiftwidth=4
@@ -84,7 +90,6 @@ let java_minlines=50
 
 " misc
 set wildmenu
-:autocmd FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
 
 " mouse
 :set mouse=nv
@@ -150,16 +155,6 @@ endfunction
 "  let old_ft=:filetype 
 :map <F12> :set ft=vo_base<cr>
 
-
-" Only do this part when compiled with support for autocommands
-if has("autocmd")
-  " When editing a file, always jump to the last cursor position
-  autocmd BufReadPost *
-  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-  \   exe "normal! g'\"" |
-  \ endif
-endif
-
 """"""""""
 " Colors "
 """"""""""
@@ -212,41 +207,56 @@ function! TextEnableCodeSnip( filetype, start, end, textSnipHl ) abort
   \ contains=@'.group
 endfunction
 
-" Laszlo javascript highlighting
-au BufRead,BufNewFile *.lzx call TextEnableCodeSnip( 'javascript', '<!\[CDATA\[', '\]\]>', 'SpecialComment' )
-
-au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
-"au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx set noexpandtab
-au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :exec CodeInit()
+"define :HighlightLongLines command to highlight the offending parts of
+"lines that are longer than the specified length (defaulting to 80)
+:hi LongLines term=standout ctermfg=red cterm=underline
+fu! s:HighlightLongLines(width)
+	let targetWidth = a:width != '' ? a:width : 100
+	if targetWidth > 0
+		exec 'match LongLines /\%>' . (targetWidth) . 'v/'
+	else
+		echomsg "Usage: HighlightLongLines [natural number]"
+	endif
+endfunction
 
 fu! CodeInit()
 	set noexpandtab
 	set shiftwidth=4
 	set tabstop=4
 	set softtabstop=4
+	call s:HighlightLongLines(100)
 endfu
-
-" JavaBrowser
-au VimEnter * let JavaBrowser_Ctags_Cmd="/usr/local/bin/exctags"
-au VimEnter * let Javabrowser_Use_Icon=1
 
 " omnicomplete (javacomplete)
 imap <Nul> <Space>
-autocmd Filetype java let g:vjde_lib_path='/home/sarumont/nuvos/nuvos.jar'
-autocmd Filetype art set expandtab
-
-"define :HighlightLongLines command to highlight the offending parts of
-"lines that are longer than the specified length (defaulting to 80)
-
-command! -nargs=? HighlightLongLines call s:HighlightLongLines('<args>')
-function! s:HighlightLongLines(width)
-	let targetWidth = a:width != '' ? a:width : 99
-	if targetWidth > 0
-		exec 'match Todo /\%>' . (targetWidth) . 'v/'
-	else
-		echomsg "Usage: HighlightLongLines [natural number]"
-	endif
-endfunction
-:map <F4> :HighlightLongLines<cr>
-
 let NERDTreeWinSize=42
+
+
+""""" Autocommands 
+
+:au Filetype java let g:vjde_lib_path='/home/sarumont/nuvos/nuvos.jar'
+:au Filetype art set expandtab
+:au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
+
+" Laszlo javascript highlighting
+:au BufRead,BufNewFile *.lzx call TextEnableCodeSnip( 'javascript', '<!\[CDATA\[', '\]\]>', 'SpecialComment' )
+
+" trailing space highlighting
+:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
+
+:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :call CodeInit()
+
+" JavaBrowser
+:au VimEnter * let JavaBrowser_Ctags_Cmd="/usr/local/bin/exctags"
+:au VimEnter * let Javabrowser_Use_Icon=1
+
+
+" When editing a file, always jump to the last cursor position
+:au BufReadPost *
+			\ if &ft == 'gitcommit' |
+			\   exe "normal! gg" |
+			\   exe "startinsert" |
+			\ elseif line("'\"") > 1 && line ("'\"") <= line("$") |
+			\   exe "normal! g`\"" |
+			\ endif
+
