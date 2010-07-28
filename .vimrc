@@ -30,6 +30,7 @@ set autoindent
 filetype plugin indent on
 
 :map \s :silent !screener.sh<CR>;
+:cmap bk BookmarkToRoot 
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -132,23 +133,39 @@ endif
 set tags=~/.tags
 
 " folding 
-"set nofen
-"set fdl=1
+set nofen
+set fdl=1
 function! JavaFold()
- setl foldmethod=syntax
- setl foldlevelstart=1
- syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
- syn match foldImports /\(\n\?import.\+;\n\)\+/ transparent fold
 
- function! FoldText()
-   return substitute(getline(v:foldstart), '{.*', '{...}', '')
- endfunction
- setl foldtext=FoldText()
+	setl foldmethod=syntax
+	setl foldlevelstart=1
+
+	syn clear javaBraces
+	syn clear javaDocComment
+
+	" set up folding for brace-delimited blocks, javadoc and imports
+	syn region javaBraces start="{" end="}" transparent fold
+	syn region javaDocComment start="/\*\*" end="\*/" keepend contains=javaCommentTitle,@javaHtml,javaDocTags,javaDocSeeTag,javaTodo,@Spell fold
+	syn match foldImports /\(\n\?import.\+;\n\)\+/ transparent fold
+
+	" add number of lines folded to the fold's text
+	function! Num2S(num, len)
+		let filler = "                                                            "
+		let text = '' . a:num
+		return strpart(filler, 1, a:len - strlen(text)) . text
+	endfunction
+
+	function! FoldText()
+		let sub = substitute(getline(v:foldstart), '/\*\|\*/\|{{{\d\=', '', 'g')
+		let diff = v:foldend - v:foldstart + 1
+		return  '+' . v:folddashes . '[' . Num2S(diff,3) . ']' . sub
+	endfunction
+	setl foldtext=FoldText()
+
 endfunction
-"au FileType java call JavaFold()
-"au FileType java setl fen
-"hi Folded ctermfg=238 ctermbg=234
-
+au FileType java call JavaFold()
+au FileType java setl fen
+hi Folded ctermfg=33 ctermbg=234
 
 " vim-outliner
 " TODO - try to switch back to old FT? 
@@ -249,6 +266,9 @@ let NERDTreeWinSize=42
 " JavaBrowser
 :au VimEnter * let JavaBrowser_Ctags_Cmd="/usr/local/bin/exctags"
 :au VimEnter * let Javabrowser_Use_Icon=1
+
+" lesscss
+au BufNewFile,BufRead *.less set filetype=less
 
 
 " When editing a file, always jump to the last cursor position
