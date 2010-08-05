@@ -165,7 +165,7 @@ function! JavaFold()
 endfunction
 au FileType java call JavaFold()
 au FileType java setl fen
-hi Folded ctermfg=33 ctermbg=234
+hi Folded ctermfg=27 ctermbg=232
 
 " vim-outliner
 " TODO - try to switch back to old FT? 
