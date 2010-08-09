@@ -8,11 +8,23 @@
 :set autowrite
 :set nocompatible
 :set textwidth=100
+:set bs=2
+
+" Search
 :set nohlsearch
 :set incsearch
+:set ignorecase
+:set smartcase
+
+" MultipleSearch
+:nmap <C-_> :Search 
+:nmap <C-Bslash> :SearchReset<cr>
+:let g:MultipleSearchColorSequence="232,232,232,232"
+:let g:MultipleSearchTextColorSequence="51,105,199,228"
+
+" paren matching
 :set showmatch
 :set matchtime=1
-:set bs=2
 
 " title string
 set titlestring=vim\ %<%F%(\ %)%m%h%w%=%l/%L-%P
@@ -182,9 +194,9 @@ hi Folded ctermfg=27 ctermbg=232
 :hi IncSearch term=standout ctermfg=yellow term=underline cterm=underline
 
 " Matching Parenthesis highlighting
-:hi MatchParen ctermbg=black
-:hi Pmenu ctermbg=black
-:hi PmenuSel ctermfg=black ctermbg=blue
+:hi MatchParen ctermbg=242
+:hi Pmenu ctermfg=white ctermbg=234
+:hi PmenuSel ctermfg=white ctermbg=33
 
 " spell checking
 :hi clear SpellBad
