@@ -119,6 +119,7 @@ vnoremap  :s/^\/\///
 :map <F6> :set spell!<cr>
 :map <F7> :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
+:map <F9> o@nuvos.system.annotations.GwtSafe
 
 set laststatus=0
 
@@ -187,6 +188,10 @@ hi Folded ctermfg=27 ctermbg=232
 """"""""""
 " Colors "
 """"""""""
+" visual mode selection
+":hi Visual ctermfg=237 ctermbg=249
+:hi Visual ctermbg=18
+
 " search and incremental search colors
 :hi clear Search
 :hi Search term=standout ctermfg=yellow cterm=underline,bold
