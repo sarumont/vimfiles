@@ -147,37 +147,41 @@ set tags=~/.tags
 
 " folding 
 set nofen
-set fdl=1
-function! JavaFold()
+"set fdl=1
+"set foldmethod=indent
+"set foldlevelstart=1
+"set foldlevel=1
+"set foldminlines=5
+"function! JavaFold()
 
-	setl foldmethod=syntax
-	setl foldlevelstart=1
+	"setl foldmethod=syntax
+	"setl foldlevelstart=1
 
-	syn clear javaBraces
-	syn clear javaDocComment
+	"syn clear javaBraces
+	"syn clear javaDocComment
 
-	" set up folding for brace-delimited blocks, javadoc and imports
-	syn region javaBraces start="{" end="}" transparent fold
-	syn region javaDocComment start="/\*\*" end="\*/" keepend contains=javaCommentTitle,@javaHtml,javaDocTags,javaDocSeeTag,javaTodo,@Spell fold
-	syn match foldImports /\(\n\?import.\+;\n\)\+/ transparent fold
+	"" set up folding for brace-delimited blocks, javadoc and imports
+	"syn region javaBraces start="{" end="}" transparent fold
+	"syn region javaDocComment start="/\*\*" end="\*/" keepend contains=javaCommentTitle,@javaHtml,javaDocTags,javaDocSeeTag,javaTodo,@Spell fold
+	"syn match foldImports /\(\n\?import.\+;\n\)\+/ transparent fold
 
-	" add number of lines folded to the fold's text
-	function! Num2S(num, len)
-		let filler = "                                                            "
-		let text = '' . a:num
-		return strpart(filler, 1, a:len - strlen(text)) . text
-	endfunction
+	"" add number of lines folded to the fold's text
+	"function! Num2S(num, len)
+		"let filler = "                                                            "
+		"let text = '' . a:num
+		"return strpart(filler, 1, a:len - strlen(text)) . text
+	"endfunction
 
-	function! FoldText()
-		let sub = substitute(getline(v:foldstart), '/\*\|\*/\|{{{\d\=', '', 'g')
-		let diff = v:foldend - v:foldstart + 1
-		return  '+' . v:folddashes . '[' . Num2S(diff,3) . ']' . sub
-	endfunction
-	setl foldtext=FoldText()
+	"function! FoldText()
+		"let sub = substitute(getline(v:foldstart), '/\*\|\*/\|{{{\d\=', '', 'g')
+		"let diff = v:foldend - v:foldstart + 1
+		"return  '+' . v:folddashes . '[' . Num2S(diff,3) . ']' . sub
+	"endfunction
+	"setl foldtext=FoldText()
 
-endfunction
-au FileType java call JavaFold()
-au FileType java setl fen
+"endfunction
+""au FileType java call JavaFold()
+"au FileType java setl fen
 hi Folded ctermfg=27 ctermbg=232
 
 " vim-outliner
