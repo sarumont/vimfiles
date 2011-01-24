@@ -1,14 +1,27 @@
+:filetype off
+" Pathogen to manage packages/plugins
+call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags() # being called in update_bundles
+
 " misc
 :autocmd!
 :set t_Co=256
 :syntax on
-:filetype on
+:filetype plugin indent on
 :set viminfo='100,\"50,:20
 :set formatoptions=croql
 :set autowrite
 :set nocompatible
 :set textwidth=100
 :set bs=2
+
+" fugitive
+:nnoremap <silent> <Leader>gd :Gdiff<cr>
+:nnoremap <silent> <Leader>gl :Glog<cr>
+:nnoremap <silent> <Leader>gs :Gstatus<cr>
+:nnoremap <silent> <Leader>gb :Gblame<cr>
+:nnoremap <silent> <Leader>gc :Gcommit<cr>
+:nnoremap <silent> <Leader>GC :Git svn dcommit<cr>
 
 " Search
 :set nohlsearch
@@ -114,14 +127,20 @@ set wildmenu
 vnoremap  :s/^/\/\//
 vnoremap  :s/^\/\///
 
+" YankRing
+:nnoremap <silent> <Leader>yr :YRShow<cr>
+:let g:yankring_history_file='.yankring_history'
+
+" Mappings to switch PWD between codebases for git-vim
+:nnoremap <silent> <Leader>cdn :cd ~/dev/nuvos<cr>
+:nnoremap <silent> <Leader>cdtt :cd ~/dev/thinktank<cr>
+
 ":cmap bc Bclose
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
 :map <F7> :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
 :map <F9> o@nuvos.system.annotations.GwtSafe
-
-set laststatus=0
 
 " NERDTree
 :map <C-I> :NERDTreeToggle<cr>
@@ -130,11 +149,10 @@ set laststatus=0
 :map <C-S-Tab> :tabprev<cr>
 
 " Status line
-:set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]
-:set laststatus=2
-:hi StatusLine cterm=none ctermfg=186 ctermbg=236
-:hi StatusLineNC cterm=none ctermfg=108 ctermbg=236
-
+set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
+set laststatus=2
+hi StatusLine cterm=none ctermfg=186 ctermbg=236
+hi StatusLineNC cterm=none ctermfg=108 ctermbg=236
 
 " current/cursor line
 if v:version > 700
@@ -301,3 +319,7 @@ au BufNewFile,BufRead *.less set filetype=less
 			\   exe "normal! g`\"" |
 			\ endif
 
+" fluffing Uwe/Tara code
+:vnoremap <leader>fr :s/\([0-9A-Za-z]\))/\1 )/<cr>
+:vnoremap <leader>fl :s/(\([0-9A-Za-z]\)/( \1/<cr>
+:vnoremap <leader>fa :s/(\([0-9A-Za-z\, .]\+\))/( \1 )/<cr>
