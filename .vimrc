@@ -127,6 +127,9 @@ set wildmenu
 vnoremap  :s/^/\/\//
 vnoremap  :s/^\/\///
 
+" Scratch
+:nnoremap <silent> <Leader>ss :Sscratch<cr>
+
 " YankRing
 :nnoremap <silent> <Leader>yr :YRShow<cr>
 :let g:yankring_history_file='.yankring_history'
