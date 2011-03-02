@@ -54,7 +54,7 @@ endif
 set autoindent
 filetype plugin indent on
 
-:map \s :silent !screener.sh<CR>;
+:map <Leader>a :silent !screener.sh<CR>;
 :cmap bk BookmarkToRoot 
 
 " Don't use Ex mode, use Q for formatting
@@ -95,6 +95,12 @@ let java_minlines=50
 :hi imExceptions ctermfg=204
 :hi memVars ctermfg=243
 
+" Diff highlights
+:hi DiffAdd ctermbg=31
+:hi DiffText ctermbg=196
+:hi DiffChange ctermbg=141
+:hi DiffDelete ctermbg=237
+
 " window navigation
 :nmap <silent> <C-h> :wincmd h<CR>
 :nmap <silent> <C-j> :wincmd j<CR>
@@ -128,7 +134,7 @@ vnoremap  :s/^/\/\//
 vnoremap  :s/^\/\///
 
 " Scratch
-:nnoremap <silent> <Leader>ss :Sscratch<cr>
+:nnoremap <silent> <Leader>s :Sscratch<cr>
 
 " YankRing
 :nnoremap <silent> <Leader>yr :YRShow<cr>
