@@ -331,4 +331,4 @@ au BufNewFile,BufRead *.less set filetype=less
 " fluffing Uwe/Tara code
 :vnoremap <leader>fr :s/\([0-9A-Za-z]\))/\1 )/<cr>
 :vnoremap <leader>fl :s/(\([0-9A-Za-z]\)/( \1/<cr>
-:vnoremap <leader>fa :s/(\([0-9A-Za-z\, .]\+\))/( \1 )/<cr>
+:vnoremap <leader>fa :s/(\([0-9A-Za-z\, ."]\+\))/( \1 )/<cr>
