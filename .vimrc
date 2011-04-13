@@ -93,7 +93,7 @@ let java_minlines=50
 " custom classes
 :hi imClass ctermfg=229
 :hi imExceptions ctermfg=204
-:hi memVars ctermfg=243
+:hi memVars ctermfg=247
 
 " Diff highlights
 :hi DiffAdd ctermbg=31
@@ -332,3 +332,6 @@ au BufNewFile,BufRead *.less set filetype=less
 :vnoremap <leader>fr :s/\([0-9A-Za-z]\))/\1 )/<cr>
 :vnoremap <leader>fl :s/(\([0-9A-Za-z]\)/( \1/<cr>
 :vnoremap <leader>fa :s/(\([0-9A-Za-z\, ."]\+\))/( \1 )/<cr>
+
+" eclim
+set cot=menu
