@@ -55,6 +55,33 @@ set autoindent
 filetype plugin indent on
 
 :map <Leader>a :silent !screener.sh<CR>;
+
+" nuvos building
+:map <Leader>nn :silent !screener.sh ~/dev/nuvos b<CR>;
+:map <Leader>nc :silent !screener.sh ~/dev/nuvos/core b<CR>;
+:map <Leader>ns :silent !screener.sh ~/dev/nuvos/swa b<CR>;
+:map <Leader>ng :silent !screener.sh ~/dev/nuvos/gwt b<CR>;
+:map <Leader>no :silent !screener.sh ~/dev/nuvos/oo b<CR>;
+:map <Leader>nnc :silent !screener.sh ~/dev/nuvos cl<CR>;
+:map <Leader>ncc :silent !screener.sh ~/dev/nuvos/core cl<CR>;
+:map <Leader>nsc :silent !screener.sh ~/dev/nuvos/swa cl<CR>;
+:map <Leader>ngc :silent !screener.sh ~/dev/nuvos/gwt cl<CR>;
+:map <Leader>noc :silent !screener.sh ~/dev/nuvos/oo cl<CR>;
+
+" ThinkTank building
+:map <Leader>tn :silent !screener.sh ~/dev/thinktank b<CR>;
+:map <Leader>tc :silent !screener.sh ~/dev/thinktank/common b<CR>;
+:map <Leader>tl :silent !screener.sh ~/dev/thinktank/client b<CR>;
+:map <Leader>td :silent !screener.sh ~/dev/thinktank/docserver b<CR>;
+:map <Leader>ts :silent !screener.sh ~/dev/thinktank/server b<CR>;
+:map <Leader>tu :silent !screener.sh ~/dev/thinktank/ui b<CR>;
+:map <Leader>ttc :silent !screener.sh ~/dev/thinktank cl<CR>;
+:map <Leader>tcc :silent !screener.sh ~/dev/thinktank/common cl<CR>;
+:map <Leader>tdc :silent !screener.sh ~/dev/thinktank/docserver cl<CR>;
+:map <Leader>tlc :silent !screener.sh ~/dev/thinktank/client cl<CR>;
+:map <Leader>tsc :silent !screener.sh ~/dev/thinktank/server cl<CR>;
+:map <Leader>tuc :silent !screener.sh ~/dev/thinktank/ui cl<CR>;
+
 :cmap bk BookmarkToRoot 
 
 " Don't use Ex mode, use Q for formatting
@@ -161,7 +188,7 @@ vnoremap  :s/^\/\///
 set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
 set laststatus=2
 hi StatusLine cterm=none ctermfg=186 ctermbg=236
-hi StatusLineNC cterm=none ctermfg=108 ctermbg=236
+hi StatusLineNC cterm=none ctermfg=240 ctermbg=234
 
 " current/cursor line
 if v:version > 700
