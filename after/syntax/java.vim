@@ -7,7 +7,7 @@ syn keyword imExceptions Exception containedin=ALLBUT,@synExcludes
 syn keyword imExceptions Throwable containedin=ALLBUT,@synExcludes
 
 " Give classes a slight coloring
-syn match imClass /\<[A-Z][a-z0-9_]\w*\>/ containedin=ALLBUT,@synExcludes
+syn match imClass /\<[A-Z]\+[a-z0-9_]\w*\>/ containedin=ALLBUT,@synExcludes
 
 " _memberVariables
 syn match memVars /\<_[a-z0-9A-Z]*\>/ containedin=ALLBUT,@synExcludes
