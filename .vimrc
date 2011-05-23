@@ -172,6 +172,7 @@ vnoremap  :s/^\/\///
 :nnoremap <silent> <Leader>cdtt :cd ~/dev/thinktank<cr>
 
 ":cmap bc Bclose
+:map <silent> <leader>l :set cursorline<cr>:sleep 250m<cr>:set nocursorline<cr>
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
 :map <F7> :set hlsearch!<cr>
@@ -191,10 +192,8 @@ hi StatusLine cterm=none ctermfg=186 ctermbg=236
 hi StatusLineNC cterm=none ctermfg=240 ctermbg=234
 
 " current/cursor line
-if v:version > 700
-	"set cursorline
-	"hi CursorLine cterm=none ctermbg=233
-endif
+hi CursorLine cterm=none ctermbg=243
+set nocursorline
 
 " tags
 set tags=~/.tags
@@ -322,7 +321,7 @@ endfu
 " omnicomplete (javacomplete)
 imap <Nul> <Space>
 let NERDTreeWinSize=42
-
+let NERDTreeHighlightCursorline=0
 
 """"" Autocommands 
 
