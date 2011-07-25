@@ -56,31 +56,37 @@ filetype plugin indent on
 
 :map <Leader>a :silent !screener.sh<CR>;
 
+" Java building
+autocmd BufRead *.java set makeprg=ant\ -q
+autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+
 " nuvos building
-:map <Leader>nn :silent !screener.sh ~/dev/nuvos b<CR>;
-:map <Leader>nc :silent !screener.sh ~/dev/nuvos/core b<CR>;
-:map <Leader>ns :silent !screener.sh ~/dev/nuvos/swa b<CR>;
-:map <Leader>ng :silent !screener.sh ~/dev/nuvos/gwt b<CR>;
-:map <Leader>no :silent !screener.sh ~/dev/nuvos/oo b<CR>;
-:map <Leader>nnc :silent !screener.sh ~/dev/nuvos cl<CR>;
-:map <Leader>ncc :silent !screener.sh ~/dev/nuvos/core cl<CR>;
-:map <Leader>nsc :silent !screener.sh ~/dev/nuvos/swa cl<CR>;
-:map <Leader>ngc :silent !screener.sh ~/dev/nuvos/gwt cl<CR>;
-:map <Leader>noc :silent !screener.sh ~/dev/nuvos/oo cl<CR>;
+:map <Leader>nn :make -f ~/dev/nuvos/build.xml<CR>
+:map <Leader>nc :make -f ~/dev/nuvos/core/build.xml<CR>
+:map <Leader>ns :make -f ~/dev/nuvos/swa/build.xml<CR>
+:map <Leader>ng :make -f ~/dev/nuvos/gwt/build.xml<CR>
+:map <Leader>no :make -f ~/dev/nuvos/oo/build.xml<CR>
+:map <Leader>nnc :make -f ~/dev/nuvos/build.xml clean<CR>:make -f ~/dev/nuvos/build.xml<cr>
+:map <Leader>ncc :make -f ~/dev/nuvos/core/build.xml clean<CR>:make -f ~/dev/nuvos/core/build.xml<cr>
+:map <Leader>nsc :make -f ~/dev/nuvos/swa/build.xml clean<CR>:make -f ~/dev/nuvos/swa/build.xml<cr>
+:map <Leader>ngc :make -f ~/dev/nuvos/gwt/build.xml clean<CR>:make -f ~/dev/nuvos/gwt/build.xml<cr>
+:map <Leader>noc :make -f ~/dev/nuvos/oo/build.xml clean<CR>:make -f ~/dev/nuvos/oo/build.xml<cr>
 
 " ThinkTank building
-:map <Leader>tn :silent !screener.sh ~/dev/thinktank b<CR>;
-:map <Leader>tc :silent !screener.sh ~/dev/thinktank/common b<CR>;
-:map <Leader>tl :silent !screener.sh ~/dev/thinktank/client b<CR>;
-:map <Leader>td :silent !screener.sh ~/dev/thinktank/docserver b<CR>;
-:map <Leader>ts :silent !screener.sh ~/dev/thinktank/server b<CR>;
-:map <Leader>tu :silent !screener.sh ~/dev/thinktank/ui b<CR>;
-:map <Leader>ttc :silent !screener.sh ~/dev/thinktank cl<CR>;
-:map <Leader>tcc :silent !screener.sh ~/dev/thinktank/common cl<CR>;
-:map <Leader>tdc :silent !screener.sh ~/dev/thinktank/docserver cl<CR>;
-:map <Leader>tlc :silent !screener.sh ~/dev/thinktank/client cl<CR>;
-:map <Leader>tsc :silent !screener.sh ~/dev/thinktank/server cl<CR>;
-:map <Leader>tuc :silent !screener.sh ~/dev/thinktank/ui cl<CR>;
+:map <Leader>tt :make -f ~/dev/thinktank/build.xml<CR>
+:map <Leader>tc :make -f ~/dev/thinktank/common/build.xml<CR>
+:map <Leader>tl :make -f ~/dev/thinktank/client/build.xml<CR>
+:map <Leader>td :make -f ~/dev/thinktank/docserver/build.xml<CR>
+:map <Leader>ts :make -f ~/dev/thinktank/server/build.xml<CR>
+:map <Leader>tu :make -f ~/dev/thinktank/ui/build.xml<CR>
+:map <Leader>tm :make -f ~/dev/thinktank/manager/build.xml<CR>
+:map <Leader>ttc :make -f ~/dev/thinktank/build.xml clean<CR>:make -f ~/dev/thinktank/build.xml<cr>
+:map <Leader>tcc :make -f ~/dev/thinktank/common/build.xml clean<CR>:make -f ~/dev/thinktank/common/build.xml<cr>
+:map <Leader>tdc :make -f ~/dev/thinktank/docserver/build.xml clean<CR>:make -f ~/dev/thinktank/docserver/build.xml<cr>
+:map <Leader>tlc :make -f ~/dev/thinktank/client/build.xml clean<CR>:make -f ~/dev/thinktank/client/build.xml<cr>
+:map <Leader>tsc :make -f ~/dev/thinktank/server/build.xml clean<CR>:make -f ~/dev/thinktank/server/build.xml<cr>
+:map <Leader>tuc :make -f ~/dev/thinktank/ui/build.xml clean<CR>:make -f ~/dev/thinktank/ui/build.xml<cr>
+:map <Leader>tmc :make -f ~/dev/thinktank/manager/build.xml clean<CR>:make -f ~/dev/thinktank/manager/build.xml<cr>
 
 :cmap bk BookmarkToRoot 
 
@@ -175,7 +181,7 @@ vnoremap  :s/^\/\///
 :map <silent> <leader>l :set cursorline<cr>:sleep 250m<cr>:set nocursorline<cr>
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
-:map <F7> :set hlsearch!<cr>
+:map <Leader>h :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
 :map <F9> o@nuvos.system.annotations.GwtSafe
 
