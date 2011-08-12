@@ -341,7 +341,7 @@ let NERDTreeHighlightCursorline=0
 " trailing space highlighting
 :au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
 
-:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :call CodeInit()
+:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.py :call CodeInit()
 
 " JavaBrowser
 :au VimEnter * let JavaBrowser_Ctags_Cmd="/usr/local/bin/exctags"
