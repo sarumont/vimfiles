@@ -88,6 +88,11 @@ autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C
 :map <Leader>tuc :make -f ~/dev/thinktank/ui/build.xml clean<CR>:make -f ~/dev/thinktank/ui/build.xml<cr>
 :map <Leader>tmc :make -f ~/dev/thinktank/manager/build.xml clean<CR>:make -f ~/dev/thinktank/manager/build.xml<cr>
 
+" easy quickfix nav
+:map <Leader>e :cn<cr>zz<cr>:set cursorline<cr>:sleep 100m<cr>:set nocursorline<cr>:cc<cr>
+:map <Leader>p :cp<cr>
+:map <Leader>l :clist<cr>
+
 :cmap bk BookmarkToRoot 
 
 " Don't use Ex mode, use Q for formatting
@@ -178,7 +183,7 @@ vnoremap  :s/^\/\///
 :nnoremap <silent> <Leader>cdtt :cd ~/dev/thinktank<cr>
 
 ":cmap bc Bclose
-:map <silent> <leader>l :set cursorline<cr>:sleep 250m<cr>:set nocursorline<cr>
+:map <silent> <leader>w :set cursorline<cr>:sleep 250m<cr>:set nocursorline<cr>
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
 :map <Leader>h :set hlsearch!<cr>
