@@ -57,7 +57,7 @@ filetype plugin indent on
 :map <Leader>a :silent !screener.sh<CR>;
 
 " Java building
-autocmd BufRead *.java set makeprg=ant\ -q
+autocmd BufRead *.java set makeprg=/compat/i386/usr/local/bin/ant\ -q
 autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
 " nuvos building
@@ -103,10 +103,6 @@ map Q gq
 :set tabstop=4
 :set softtabstop=4
 :set noexpandtab
-"if $USER == "richard"
-    ":set expandtab
-"else 
-"endif
 
 " SQL shit
 let g:omni_sql_no_default_maps = 1
