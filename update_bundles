@@ -10,6 +10,7 @@ git_bundles = [
 	"git://github.com/mattn/gist-vim.git",
 	"git://github.com/mhz/vim-matchit.git",
 	"git://github.com/vimoutliner/vimoutliner.git",
+	"git://github.com/msanders/snipmate.vim",
 
 	#"git://github.com/motemen/git-vim.git", # not as good as fugitive - depends on PWD
 	#"git://github.com/tpope/vim-cucumber.git",
