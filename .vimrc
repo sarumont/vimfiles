@@ -15,6 +15,9 @@ call pathogen#runtime_append_all_bundles()
 :set textwidth=100
 :set bs=2
 
+set background=dark
+colorscheme solarized
+
 " fugitive
 :nnoremap <silent> <Leader>gd :Gdiff<cr>
 :nnoremap <silent> <Leader>gl :Glog<cr>
@@ -35,16 +38,24 @@ call pathogen#runtime_append_all_bundles()
 :let g:MultipleSearchColorSequence="232,232,232,232"
 :let g:MultipleSearchTextColorSequence="51,105,199,228"
 
+" UtilSnip
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"] 
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
 " paren matching
 :set showmatch
 :set matchtime=1
 
 " title string
-set titlestring=vim\ %<%F%(\ %)%m%h%w%=%l/%L-%P
+"set titlestring=vim\ %<%F%(\ %)%m%h%w%=%l/%L-%P
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
 set titlelen=70
 if &term == "screen"
 	set t_ts=k
 	set t_fs=\
+
 endif
 if &term == "screen" || &term == "xterm" 
 	set title
@@ -66,11 +77,11 @@ autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C
 :map <Leader>ns :make -f ~/dev/nuvos/swa/build.xml<CR>
 :map <Leader>ng :make -f ~/dev/nuvos/gwt/build.xml<CR>
 :map <Leader>no :make -f ~/dev/nuvos/oo/build.xml<CR>
-:map <Leader>nnc :make -f ~/dev/nuvos/build.xml clean<CR>:make -f ~/dev/nuvos/build.xml<cr>
-:map <Leader>ncc :make -f ~/dev/nuvos/core/build.xml clean<CR>:make -f ~/dev/nuvos/core/build.xml<cr>
-:map <Leader>nsc :make -f ~/dev/nuvos/swa/build.xml clean<CR>:make -f ~/dev/nuvos/swa/build.xml<cr>
-:map <Leader>ngc :make -f ~/dev/nuvos/gwt/build.xml clean<CR>:make -f ~/dev/nuvos/gwt/build.xml<cr>
-:map <Leader>noc :make -f ~/dev/nuvos/oo/build.xml clean<CR>:make -f ~/dev/nuvos/oo/build.xml<cr>
+:map <Leader>clnn :make -f ~/dev/nuvos/build.xml clean<CR>:make -f ~/dev/nuvos/build.xml<cr>
+:map <Leader>clnc :make -f ~/dev/nuvos/core/build.xml clean<CR>:make -f ~/dev/nuvos/core/build.xml<cr>
+:map <Leader>clns :make -f ~/dev/nuvos/swa/build.xml clean<CR>:make -f ~/dev/nuvos/swa/build.xml<cr>
+:map <Leader>clng :make -f ~/dev/nuvos/gwt/build.xml clean<CR>:make -f ~/dev/nuvos/gwt/build.xml<cr>
+:map <Leader>clno :make -f ~/dev/nuvos/oo/build.xml clean<CR>:make -f ~/dev/nuvos/oo/build.xml<cr>
 
 " ThinkTank building
 :map <Leader>tt :make -f ~/dev/thinktank/build.xml<CR>
@@ -80,13 +91,13 @@ autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C
 :map <Leader>ts :make -f ~/dev/thinktank/server/build.xml<CR>
 :map <Leader>tu :make -f ~/dev/thinktank/ui/build.xml<CR>
 :map <Leader>tm :make -f ~/dev/thinktank/manager/build.xml<CR>
-:map <Leader>ttc :make -f ~/dev/thinktank/build.xml clean<CR>:make -f ~/dev/thinktank/build.xml<cr>
-:map <Leader>tcc :make -f ~/dev/thinktank/common/build.xml clean<CR>:make -f ~/dev/thinktank/common/build.xml<cr>
-:map <Leader>tdc :make -f ~/dev/thinktank/docserver/build.xml clean<CR>:make -f ~/dev/thinktank/docserver/build.xml<cr>
-:map <Leader>tlc :make -f ~/dev/thinktank/client/build.xml clean<CR>:make -f ~/dev/thinktank/client/build.xml<cr>
-:map <Leader>tsc :make -f ~/dev/thinktank/server/build.xml clean<CR>:make -f ~/dev/thinktank/server/build.xml<cr>
-:map <Leader>tuc :make -f ~/dev/thinktank/ui/build.xml clean<CR>:make -f ~/dev/thinktank/ui/build.xml<cr>
-:map <Leader>tmc :make -f ~/dev/thinktank/manager/build.xml clean<CR>:make -f ~/dev/thinktank/manager/build.xml<cr>
+:map <Leader>cltt :make -f ~/dev/thinktank/build.xml clean<CR>:make -f ~/dev/thinktank/build.xml<cr>
+:map <Leader>cltc :make -f ~/dev/thinktank/common/build.xml clean<CR>:make -f ~/dev/thinktank/common/build.xml<cr>
+:map <Leader>cltd :make -f ~/dev/thinktank/docserver/build.xml clean<CR>:make -f ~/dev/thinktank/docserver/build.xml<cr>
+:map <Leader>cltl :make -f ~/dev/thinktank/client/build.xml clean<CR>:make -f ~/dev/thinktank/client/build.xml<cr>
+:map <Leader>clts :make -f ~/dev/thinktank/server/build.xml clean<CR>:make -f ~/dev/thinktank/server/build.xml<cr>
+:map <Leader>cltu :make -f ~/dev/thinktank/ui/build.xml clean<CR>:make -f ~/dev/thinktank/ui/build.xml<cr>
+:map <Leader>cltm :make -f ~/dev/thinktank/manager/build.xml clean<CR>:make -f ~/dev/thinktank/manager/build.xml<cr>
 
 " easy quickfix nav
 :map <Leader>e :cn<cr>zz<cr>:set cursorline<cr>:sleep 100m<cr>:set nocursorline<cr>:cc<cr>
@@ -113,27 +124,27 @@ let java_highlight_all=1
 let java_minlines=50
 
 " JDK highlights
-:hi javaNumber ctermfg=198
-:hi javaC_JavaLang ctermfg=229
-:hi javaR_JavaLang ctermfg=229
-:hi javaLangObject ctermfg=252
-:hi javaStatement ctermfg=202
-:hi javaExceptions ctermfg=124
-:hi javaConditional ctermfg=127
-:hi javaRepeat ctermfg=127
-:hi javaScopeDecl ctermfg=41
-:hi javaType ctermfg=35
+":hi javaNumber ctermfg=198
+":hi javaC_JavaLang ctermfg=229
+":hi javaR_JavaLang ctermfg=229
+":hi javaLangObject ctermfg=252
+":hi javaStatement ctermfg=202
+":hi javaExceptions ctermfg=124
+":hi javaConditional ctermfg=127
+":hi javaRepeat ctermfg=127
+":hi javaScopeDecl ctermfg=41
+":hi javaType ctermfg=35
 
-" custom classes
-:hi imClass ctermfg=229
-:hi imExceptions ctermfg=204
-:hi memVars ctermfg=247
+"" custom classes
+":hi imClass ctermfg=229
+":hi imExceptions ctermfg=204
+":hi memVars ctermfg=247
 
-" Diff highlights
-:hi DiffAdd ctermbg=31
-:hi DiffText ctermbg=196
-:hi DiffChange ctermbg=141
-:hi DiffDelete ctermbg=237
+"" Diff highlights
+":hi DiffAdd ctermbg=31
+":hi DiffText ctermbg=196
+":hi DiffChange ctermbg=141
+":hi DiffDelete ctermbg=237
 
 " window navigation
 :nmap <silent> <C-h> :wincmd h<CR>
@@ -195,11 +206,11 @@ vnoremap  :s/^\/\///
 " Status line
 set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
 set laststatus=2
-hi StatusLine cterm=none ctermfg=186 ctermbg=236
-hi StatusLineNC cterm=none ctermfg=240 ctermbg=234
+hi StatusLine cterm=none ctermfg=15 ctermbg=11
+hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
 
 " current/cursor line
-hi CursorLine cterm=none ctermbg=243
+hi CursorLine cterm=none ctermbg=15
 set nocursorline
 
 " tags
@@ -242,7 +253,7 @@ set nofen
 "endfunction
 ""au FileType java call JavaFold()
 "au FileType java setl fen
-hi Folded ctermfg=27 ctermbg=232
+"hi Folded ctermfg=27 ctermbg=232
 
 " vim-outliner
 " TODO - try to switch back to old FT? 
@@ -254,28 +265,28 @@ hi Folded ctermfg=27 ctermbg=232
 """"""""""
 " visual mode selection
 ":hi Visual ctermfg=237 ctermbg=249
-:hi Visual ctermbg=18
+":hi Visual ctermbg=18
 
-" search and incremental search colors
-:hi clear Search
-:hi Search term=standout ctermfg=yellow cterm=underline,bold
-:hi clear IncSearch
-:hi IncSearch term=standout ctermfg=yellow term=underline cterm=underline
+"" search and incremental search colors
+":hi clear Search
+":hi Search term=standout ctermfg=yellow cterm=underline,bold
+":hi clear IncSearch
+":hi IncSearch term=standout ctermfg=yellow term=underline cterm=underline
 
-" Matching Parenthesis highlighting
-:hi MatchParen ctermbg=242
-:hi Pmenu ctermfg=white ctermbg=234
-:hi PmenuSel ctermfg=white ctermbg=33
+"" Matching Parenthesis highlighting
+":hi MatchParen ctermbg=242
+":hi Pmenu ctermfg=white ctermbg=234
+":hi PmenuSel ctermfg=white ctermbg=33
 
-" spell checking
-:hi clear SpellBad
-:hi SpellBad term=standout ctermfg=darkred term=underline cterm=underline
-:hi clear SpellCap
-:hi SpellCap term=standout ctermfg=lightgreen term=underline cterm=underline
-:hi clear SpellRare
-:hi SpellRare term=standout ctermfg=blue term=underline cterm=underline
-:hi clear SpellLocal
-:hi SpellLocal term=standout ctermfg=cyan term=underline cterm=underline
+"" spell checking
+":hi clear SpellBad
+":hi SpellBad term=standout ctermfg=darkred term=underline cterm=underline
+":hi clear SpellCap
+":hi SpellCap term=standout ctermfg=lightgreen term=underline cterm=underline
+":hi clear SpellRare
+":hi SpellRare term=standout ctermfg=blue term=underline cterm=underline
+":hi clear SpellLocal
+":hi SpellLocal term=standout ctermfg=cyan term=underline cterm=underline
 
 " Function for enabling embedded syntax highlighting.  Usage: 
 "	:call TextEnableCodeSnip( 'javascript', '<!\[CDATA\[', '\]\]>', 'SpecialComment' )
@@ -307,7 +318,7 @@ endfunction
 
 "define :HighlightLongLines command to highlight the offending parts of
 "lines that are longer than the specified length (defaulting to 80)
-:hi LongLines term=standout ctermfg=red cterm=underline
+hi LongLines term=standout ctermfg=red cterm=underline
 fu! s:HighlightLongLines(width)
 	let targetWidth = a:width != '' ? a:width : 100
 	if targetWidth > 0
