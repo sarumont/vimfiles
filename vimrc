@@ -1,3 +1,4 @@
+:set nocompatible
 :filetype off
 
 " Pathogen to manage packages/plugins
@@ -12,7 +13,6 @@ call pathogen#helptags()
 :set viminfo='100,\"50,:20
 :set formatoptions=croql
 :set autowrite
-:set nocompatible
 :set textwidth=100
 :set bs=2
 set so=7
