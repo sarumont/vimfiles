@@ -1,0 +1,12 @@
+Clone:
+	git clone git://github.com/sarumont/vimfiles.git ~/.vim
+
+Create symlink(s):
+	ln -s ~/.vim/vimrc ~/.vimrc
+
+Fetch submodules:
+	cd ~/.vim
+	git submodule init
+	git submodule update
+
+
