@@ -15,9 +15,16 @@ call pathogen#helptags()
 :set nocompatible
 :set textwidth=100
 :set bs=2
+set so=7
+let mapleader = ","
+let g:mapleader = ","
+set hidden
+set wildmenu
+set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class
 
 set background=dark
 colorscheme solarized
+
 
 " fugitive
 :nnoremap <silent> <Leader>gd :Gdiff<cr>
@@ -69,7 +76,7 @@ filetype plugin indent on
 :map <Leader>a :silent !screener.sh<CR>;
 
 " Java building
-autocmd BufRead *.java set makeprg=/compat/i386/usr/local/bin/ant\ -q
+autocmd BufRead *.java set makeprg=ant\ -q
 autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
 " easy quickfix nav
@@ -101,9 +108,6 @@ let java_minlines=50
 :nmap <silent> <C-j> :wincmd j<CR>
 :nmap <silent> <C-k> :wincmd k<CR>
 :nmap <silent> <C-l> :wincmd l<CR>
-
-" misc
-set wildmenu
 
 " mouse
 :set mouse=nv
