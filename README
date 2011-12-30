@@ -9,4 +9,7 @@ Fetch submodules:
 	git submodule init
 	git submodule update
 
+Add local crap:
+	cd ~/.vim/local
+	<fetch stuff here>
 
