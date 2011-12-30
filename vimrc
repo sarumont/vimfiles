@@ -1,7 +1,8 @@
 :filetype off
+
 " Pathogen to manage packages/plugins
 call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags() # being called in update_bundles
+call pathogen#helptags()
 
 " misc
 :autocmd!
@@ -71,34 +72,6 @@ filetype plugin indent on
 autocmd BufRead *.java set makeprg=/compat/i386/usr/local/bin/ant\ -q
 autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
-" nuvos building
-:map <Leader>nn :make -f ~/dev/nuvos/build.xml<CR>
-:map <Leader>nc :make -f ~/dev/nuvos/core/build.xml<CR>
-:map <Leader>ns :make -f ~/dev/nuvos/swa/build.xml<CR>
-:map <Leader>ng :make -f ~/dev/nuvos/gwt/build.xml<CR>
-:map <Leader>no :make -f ~/dev/nuvos/oo/build.xml<CR>
-:map <Leader>clnn :make -f ~/dev/nuvos/build.xml clean<CR>:make -f ~/dev/nuvos/build.xml<cr>
-:map <Leader>clnc :make -f ~/dev/nuvos/core/build.xml clean<CR>:make -f ~/dev/nuvos/core/build.xml<cr>
-:map <Leader>clns :make -f ~/dev/nuvos/swa/build.xml clean<CR>:make -f ~/dev/nuvos/swa/build.xml<cr>
-:map <Leader>clng :make -f ~/dev/nuvos/gwt/build.xml clean<CR>:make -f ~/dev/nuvos/gwt/build.xml<cr>
-:map <Leader>clno :make -f ~/dev/nuvos/oo/build.xml clean<CR>:make -f ~/dev/nuvos/oo/build.xml<cr>
-
-" ThinkTank building
-:map <Leader>tt :make -f ~/dev/thinktank/build.xml<CR>
-:map <Leader>tc :make -f ~/dev/thinktank/common/build.xml<CR>
-:map <Leader>tl :make -f ~/dev/thinktank/client/build.xml<CR>
-:map <Leader>td :make -f ~/dev/thinktank/docserver/build.xml<CR>
-:map <Leader>ts :make -f ~/dev/thinktank/server/build.xml<CR>
-:map <Leader>tu :make -f ~/dev/thinktank/ui/build.xml<CR>
-:map <Leader>tm :make -f ~/dev/thinktank/manager/build.xml<CR>
-:map <Leader>cltt :make -f ~/dev/thinktank/build.xml clean<CR>:make -f ~/dev/thinktank/build.xml<cr>
-:map <Leader>cltc :make -f ~/dev/thinktank/common/build.xml clean<CR>:make -f ~/dev/thinktank/common/build.xml<cr>
-:map <Leader>cltd :make -f ~/dev/thinktank/docserver/build.xml clean<CR>:make -f ~/dev/thinktank/docserver/build.xml<cr>
-:map <Leader>cltl :make -f ~/dev/thinktank/client/build.xml clean<CR>:make -f ~/dev/thinktank/client/build.xml<cr>
-:map <Leader>clts :make -f ~/dev/thinktank/server/build.xml clean<CR>:make -f ~/dev/thinktank/server/build.xml<cr>
-:map <Leader>cltu :make -f ~/dev/thinktank/ui/build.xml clean<CR>:make -f ~/dev/thinktank/ui/build.xml<cr>
-:map <Leader>cltm :make -f ~/dev/thinktank/manager/build.xml clean<CR>:make -f ~/dev/thinktank/manager/build.xml<cr>
-
 " easy quickfix nav
 :map <Leader>e :cn<cr>zz<cr>:set cursorline<cr>:sleep 100m<cr>:set nocursorline<cr>:cc<cr>
 :map <Leader>p :cp<cr>
@@ -123,47 +96,11 @@ let java_allow_cpp_keywords=1
 let java_highlight_all=1
 let java_minlines=50
 
-" JDK highlights
-":hi javaNumber ctermfg=198
-":hi javaC_JavaLang ctermfg=229
-":hi javaR_JavaLang ctermfg=229
-":hi javaLangObject ctermfg=252
-":hi javaStatement ctermfg=202
-":hi javaExceptions ctermfg=124
-":hi javaConditional ctermfg=127
-":hi javaRepeat ctermfg=127
-":hi javaScopeDecl ctermfg=41
-":hi javaType ctermfg=35
-
-"" custom classes
-":hi imClass ctermfg=229
-":hi imExceptions ctermfg=204
-":hi memVars ctermfg=247
-
-"" Diff highlights
-":hi DiffAdd ctermbg=31
-":hi DiffText ctermbg=196
-":hi DiffChange ctermbg=141
-":hi DiffDelete ctermbg=237
-
 " window navigation
 :nmap <silent> <C-h> :wincmd h<CR>
 :nmap <silent> <C-j> :wincmd j<CR>
 :nmap <silent> <C-k> :wincmd k<CR>
 :nmap <silent> <C-l> :wincmd l<CR>
-
-"
-" FG on these isn't necessarily correct - and the BG sucks with a /* */ or javadoc comment
-"
-"hi javaComment ctermfg=4 ctermbg=234
-"hi javaCommentStar ctermfg=4 ctermbg=234
-"hi javaLineComment ctermfg=4 ctermbg=234
-"hi javaDocComment ctermfg=4 ctermbg=234
-"hi javaCommentTitle ctermfg=4 ctermbg=234
-"hi javaDocTags ctermfg=4 ctermbg=234
-"hi javaDocParam ctermfg=4 ctermbg=234
-"hi javaDocSeeTag ctermfg=4 ctermbg=234
-"hi javaDocSeeTagParam ctermfg=4 ctermbg=234
 
 " misc
 set wildmenu
@@ -172,11 +109,9 @@ set wildmenu
 :set mouse=nv
 :set mousehide
 
+""""""""""""""""""""""""""""""""""""""""
 " keymappings
-
-" easy comments
-vnoremap  :s/^/\/\//
-vnoremap  :s/^\/\///
+""""""""""""""""""""""""""""""""""""""""
 
 " Scratch
 :nnoremap <silent> <Leader>s :Sscratch<cr>
@@ -185,17 +120,12 @@ vnoremap  :s/^\/\///
 :nnoremap <silent> <Leader>yr :YRShow<cr>
 :let g:yankring_history_file='.yankring_history'
 
-" Mappings to switch PWD between codebases for git-vim
-:nnoremap <silent> <Leader>cdn :cd ~/dev/nuvos<cr>
-:nnoremap <silent> <Leader>cdtt :cd ~/dev/thinktank<cr>
-
 ":cmap bc Bclose
 :map <silent> <leader>w :set cursorline<cr>:sleep 250m<cr>:set nocursorline<cr>
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
 :map <Leader>h :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
-:map <F9> o@nuvos.system.annotations.GwtSafe
 
 " NERDTree
 :map <C-I> :NERDTreeToggle<cr>
@@ -260,34 +190,6 @@ set nofen
 "  let old_ft=:filetype 
 :map <F12> :set ft=vo_base<cr>
 
-""""""""""
-" Colors "
-""""""""""
-" visual mode selection
-":hi Visual ctermfg=237 ctermbg=249
-":hi Visual ctermbg=18
-
-"" search and incremental search colors
-":hi clear Search
-":hi Search term=standout ctermfg=yellow cterm=underline,bold
-":hi clear IncSearch
-":hi IncSearch term=standout ctermfg=yellow term=underline cterm=underline
-
-"" Matching Parenthesis highlighting
-":hi MatchParen ctermbg=242
-":hi Pmenu ctermfg=white ctermbg=234
-":hi PmenuSel ctermfg=white ctermbg=33
-
-"" spell checking
-":hi clear SpellBad
-":hi SpellBad term=standout ctermfg=darkred term=underline cterm=underline
-":hi clear SpellCap
-":hi SpellCap term=standout ctermfg=lightgreen term=underline cterm=underline
-":hi clear SpellRare
-":hi SpellRare term=standout ctermfg=blue term=underline cterm=underline
-":hi clear SpellLocal
-":hi SpellLocal term=standout ctermfg=cyan term=underline cterm=underline
-
 " Function for enabling embedded syntax highlighting.  Usage: 
 "	:call TextEnableCodeSnip( 'javascript', '<!\[CDATA\[', '\]\]>', 'SpecialComment' )
 "
@@ -342,9 +244,6 @@ let NERDTreeWinSize=42
 let NERDTreeHighlightCursorline=0
 
 """"" Autocommands 
-
-:au Filetype java let g:vjde_lib_path='/home/sarumont/nuvos/nuvos.jar'
-:au Filetype art set expandtab
 :au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
 
 " Laszlo javascript highlighting
@@ -352,16 +251,10 @@ let NERDTreeHighlightCursorline=0
 
 " trailing space highlighting
 :au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
-
 :au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.py :call CodeInit()
-
-" JavaBrowser
-:au VimEnter * let JavaBrowser_Ctags_Cmd="/usr/local/bin/exctags"
-:au VimEnter * let Javabrowser_Use_Icon=1
 
 " lesscss
 au BufNewFile,BufRead *.less set filetype=less
-
 
 " When editing a file, always jump to the last cursor position
 :au BufReadPost *
@@ -372,10 +265,40 @@ au BufNewFile,BufRead *.less set filetype=less
 			\   exe "normal! g`\"" |
 			\ endif
 
+" TODO: Remove this stuff to a local file
+
 " fluffing Uwe/Tara code
 :vnoremap <leader>fr :s/\([0-9A-Za-z]\))/\1 )/<cr>
 :vnoremap <leader>fl :s/(\([0-9A-Za-z]\)/( \1/<cr>
 :vnoremap <leader>fa :s/(\([0-9A-Za-z\, ."]\+\))/( \1 )/<cr>
 
-" eclim
-set cot=menu
+:map <F9> o@nuvos.system.annotations.GwtSafe
+
+" nuvos building
+:map <Leader>nn :make -f ~/dev/nuvos/build.xml<CR>
+:map <Leader>nc :make -f ~/dev/nuvos/core/build.xml<CR>
+:map <Leader>ns :make -f ~/dev/nuvos/swa/build.xml<CR>
+:map <Leader>ng :make -f ~/dev/nuvos/gwt/build.xml<CR>
+:map <Leader>no :make -f ~/dev/nuvos/oo/build.xml<CR>
+:map <Leader>clnn :make -f ~/dev/nuvos/build.xml clean<CR>:make -f ~/dev/nuvos/build.xml<cr>
+:map <Leader>clnc :make -f ~/dev/nuvos/core/build.xml clean<CR>:make -f ~/dev/nuvos/core/build.xml<cr>
+:map <Leader>clns :make -f ~/dev/nuvos/swa/build.xml clean<CR>:make -f ~/dev/nuvos/swa/build.xml<cr>
+:map <Leader>clng :make -f ~/dev/nuvos/gwt/build.xml clean<CR>:make -f ~/dev/nuvos/gwt/build.xml<cr>
+:map <Leader>clno :make -f ~/dev/nuvos/oo/build.xml clean<CR>:make -f ~/dev/nuvos/oo/build.xml<cr>
+
+" ThinkTank building
+:map <Leader>tt :make -f ~/dev/thinktank/build.xml<CR>
+:map <Leader>tc :make -f ~/dev/thinktank/common/build.xml<CR>
+:map <Leader>tl :make -f ~/dev/thinktank/client/build.xml<CR>
+:map <Leader>td :make -f ~/dev/thinktank/docserver/build.xml<CR>
+:map <Leader>ts :make -f ~/dev/thinktank/server/build.xml<CR>
+:map <Leader>tu :make -f ~/dev/thinktank/ui/build.xml<CR>
+:map <Leader>tm :make -f ~/dev/thinktank/manager/build.xml<CR>
+:map <Leader>cltt :make -f ~/dev/thinktank/build.xml clean<CR>:make -f ~/dev/thinktank/build.xml<cr>
+:map <Leader>cltc :make -f ~/dev/thinktank/common/build.xml clean<CR>:make -f ~/dev/thinktank/common/build.xml<cr>
+:map <Leader>cltd :make -f ~/dev/thinktank/docserver/build.xml clean<CR>:make -f ~/dev/thinktank/docserver/build.xml<cr>
+:map <Leader>cltl :make -f ~/dev/thinktank/client/build.xml clean<CR>:make -f ~/dev/thinktank/client/build.xml<cr>
+:map <Leader>clts :make -f ~/dev/thinktank/server/build.xml clean<CR>:make -f ~/dev/thinktank/server/build.xml<cr>
+:map <Leader>cltu :make -f ~/dev/thinktank/ui/build.xml clean<CR>:make -f ~/dev/thinktank/ui/build.xml<cr>
+:map <Leader>cltm :make -f ~/dev/thinktank/manager/build.xml clean<CR>:make -f ~/dev/thinktank/manager/build.xml<cr>
+
