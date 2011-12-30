@@ -37,3 +37,6 @@
 [submodule "bundle/indexedsearch"]
 	path = bundle/indexedsearch
 	url = git://github.com/henrik/vim-indexed-search.git
+[submodule "bundle/localrc"]
+	path = bundle/localrc
+	url = git://github.com/thinca/vim-localrc.git
