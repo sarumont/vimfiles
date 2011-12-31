@@ -25,7 +25,6 @@ set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class
 set background=dark
 colorscheme solarized
 
-
 " fugitive
 :nnoremap <silent> <Leader>gd :Gdiff<cr>
 :nnoremap <silent> <Leader>gl :Glog<cr>
@@ -33,6 +32,14 @@ colorscheme solarized
 :nnoremap <silent> <Leader>gb :Gblame<cr>
 :nnoremap <silent> <Leader>gc :Gcommit<cr>
 :nnoremap <silent> <Leader>GC :Git svn dcommit<cr>
+:nnoremap <silent> <Leader>GR :Git svn rebase<cr>
+:nnoremap <silent> <Leader>amend :Git commit --amend<cr>
+:nnoremap <silent> <Leader>stash :Git stash<cr>
+:nnoremap <silent> <Leader>pop :Git stash pop<cr>
+
+" Command-T
+nnoremap <silent> <Leader><Leader> :CommandT<CR>
+let g:CommandTAcceptSelectionSplitMap=['<C-g>', '<C-o>']
 
 " Search
 :set nohlsearch
