@@ -275,3 +275,6 @@ au BufNewFile,BufRead *.less set filetype=less
 			\ elseif line("'\"") > 1 && line ("'\"") <= line("$") |
 			\   exe "normal! g`\"" |
 			\ endif
+
+" multimon support
+source ~/.vim/bundle/vim-multiple-monitors/multimonitor.vim
