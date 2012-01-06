@@ -276,5 +276,14 @@ au BufNewFile,BufRead *.less set filetype=less
 			\   exe "normal! g`\"" |
 			\ endif
 
+" DETECT FILE CHANGED, DAMMIT 
+:au CursorHold * checktime " check file timestamp after inactivity for a while 
+:au CursorHoldI * checktime " check file timestamp after inactivity for a while 
+:au CursorMoved * checktime " check file timestamp after moving 
+:au CursorMovedI * checktime " check file timestamp after moving 
+:au InsertEnter * checktime " check file timestamp after entering insert mode 
+:au FocusGained * checktime " check file timestamp after gaining focus (usually doesn't work) 
+:au WinEnter * checktime " check file timestamp after entering insert mode
+
 " multimon support
 source ~/.vim/bundle/vim-multiple-monitors/multimonitor.vim
