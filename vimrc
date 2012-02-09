@@ -23,7 +23,9 @@ set wildmenu
 set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class
 
 set background=dark
-colorscheme solarized
+let g:zenburn_high_Contrast = 1
+let g:zenburn_old_Visual = 1
+colorscheme zenburn
 
 " fugitive
 :nnoremap <silent> <Leader>gd :Gdiff<cr>
@@ -147,8 +149,8 @@ let java_minlines=50
 " Status line
 set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
 set laststatus=2
-hi StatusLine cterm=none ctermfg=15 ctermbg=11
-hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
+"hi StatusLine cterm=none ctermfg=15 ctermbg=11
+"hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
 
 " current/cursor line
 hi CursorLine cterm=none ctermbg=15
