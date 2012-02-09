@@ -74,3 +74,6 @@
 [submodule "bundle/zenburn"]
 	path = bundle/zenburn
 	url = git://github.com/vim-scripts/Zenburn.git
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = git://github.com/mileszs/ack.vim.git

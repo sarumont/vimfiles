@@ -27,6 +27,10 @@ let g:zenburn_high_Contrast = 1
 let g:zenburn_old_Visual = 1
 colorscheme zenburn
 
+" ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
+:nnoremap <silent> <Leader>a :Ack 
+
 " fugitive
 :nnoremap <silent> <Leader>gd :Gdiff<cr>
 :nnoremap <silent> <Leader>gl :Glog<cr>
@@ -81,8 +85,6 @@ endif
 " Indention
 set autoindent
 filetype plugin indent on
-
-:map <Leader>a :silent !screener.sh<CR>;
 
 " Java building
 autocmd BufRead *.java set makeprg=ant\ -q
