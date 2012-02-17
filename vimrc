@@ -44,6 +44,9 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
 :nnoremap <silent> <Leader>stash :Git stash<cr>
 :nnoremap <silent> <Leader>pop :Git stash pop<cr>
 
+" gundo
+:nnoremap <silent> <leader>gun :GundoToggle<cr>
+
 " Command-T
 nnoremap <silent> <Leader><Leader> :CommandT<CR>
 let g:CommandTAcceptSelectionSplitMap=['<C-g>', '<C-o>']
