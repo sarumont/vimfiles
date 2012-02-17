@@ -21,6 +21,7 @@ let g:mapleader = ","
 set hidden
 set wildmenu
 set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class
+set undofile
 
 set background=dark
 let g:zenburn_high_Contrast = 1
@@ -38,7 +39,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
 :nnoremap <silent> <Leader>gb :Gblame<cr>
 :nnoremap <silent> <Leader>gc :Gcommit<cr>
 :nnoremap <silent> <Leader>GC :Git svn dcommit<cr>
-:nnoremap <silent> <Leader>GR :Git svn rebase<cr>
+:nnoremap <silent> <Leader>GR :Git svn rebase<cr>:CommandTFlush<cr>
 :nnoremap <silent> <Leader>amend :Git commit --amend<cr>
 :nnoremap <silent> <Leader>stash :Git stash<cr>
 :nnoremap <silent> <Leader>pop :Git stash pop<cr>
@@ -281,13 +282,13 @@ au BufNewFile,BufRead *.less set filetype=less
 			\ endif
 
 " DETECT FILE CHANGED, DAMMIT 
-:au CursorHold * checktime " check file timestamp after inactivity for a while 
-:au CursorHoldI * checktime " check file timestamp after inactivity for a while 
-:au CursorMoved * checktime " check file timestamp after moving 
-:au CursorMovedI * checktime " check file timestamp after moving 
-:au InsertEnter * checktime " check file timestamp after entering insert mode 
-:au FocusGained * checktime " check file timestamp after gaining focus (usually doesn't work) 
-:au WinEnter * checktime " check file timestamp after entering insert mode
+:au CursorHold *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
+:au CursorHoldI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
+:au CursorMoved *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
+:au CursorMovedI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
+:au InsertEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode 
+:au FocusGained *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after gaining focus (usually doesn't work) 
+:au WinEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode
 
 " multimon support
 source ~/.vim/bundle/vim-multiple-monitors/multimonitor.vim
