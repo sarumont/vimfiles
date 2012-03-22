@@ -20,7 +20,7 @@ let mapleader = ","
 let g:mapleader = ","
 set hidden
 set wildmenu
-set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class
+set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo
 set undofile
 
 set background=dark
@@ -29,7 +29,7 @@ let g:zenburn_old_Visual = 1
 colorscheme zenburn
 
 " ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case"
+let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir=war --ignore-dir=release"
 :nnoremap <silent> <Leader>a :Ack 
 
 " fugitive
