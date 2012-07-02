@@ -49,6 +49,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir
 
 " Command-T
 nnoremap <silent> <Leader><Leader> :CommandT<CR>
+nnoremap <silent> <Leader>ctf :CommandTFlush<CR>
 let g:CommandTAcceptSelectionSplitMap=['<C-g>', '<C-o>']
 
 " Search
@@ -117,6 +118,7 @@ let g:omni_sql_no_default_maps = 1
 let java_allow_cpp_keywords=1
 let java_highlight_all=1
 let java_minlines=50
+autocmd BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
 
 " window navigation
 :nmap <silent> <C-h> :wincmd h<CR>
