@@ -51,6 +51,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir
 nnoremap <silent> <Leader><Leader> :CommandT<CR>
 nnoremap <silent> <Leader>ctf :CommandTFlush<CR>
 let g:CommandTAcceptSelectionSplitMap=['<C-g>', '<C-o>']
+let g:CommandTMaxFiles=1000000
 
 " Search
 :set nohlsearch
