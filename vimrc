@@ -9,6 +9,7 @@ call pathogen#helptags()
 :autocmd!
 :set t_Co=256
 :syntax on
+:filetype plugin on
 :filetype plugin indent on
 :set viminfo='100,\"50,:20
 :set formatoptions=croql
@@ -43,6 +44,10 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir
 :nnoremap <silent> <Leader>amend :Git commit --amend<cr>
 :nnoremap <silent> <Leader>stash :Git stash<cr>
 :nnoremap <silent> <Leader>pop :Git stash pop<cr>
+
+" JDK switching
+:nnoremap <silent> <Leader>jdk6 :let $JAVA_HOME = '/usr/lib/jvm/java-6-openjdk-i386'<cr>
+:nnoremap <silent> <Leader>jdk7 :let $JAVA_HOME = '/usr/lib/jvm/java-7-openjdk-i386'<cr>
 
 " gundo
 :nnoremap <silent> <leader>gun :GundoToggle<cr>
