@@ -45,6 +45,10 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir
 :nnoremap <silent> <Leader>stash :Git stash<cr>
 :nnoremap <silent> <Leader>pop :Git stash pop<cr>
 
+" Gist
+let g:gist_clip_command = 'xclip -selection clipboard'
+
+
 " JDK switching
 :nnoremap <silent> <Leader>jdk6 :let $JAVA_HOME = '/usr/lib/jvm/java-6-openjdk-i386'<cr>
 :nnoremap <silent> <Leader>jdk7 :let $JAVA_HOME = '/usr/lib/jvm/java-7-openjdk-i386'<cr>
