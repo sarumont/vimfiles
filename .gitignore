@@ -1,3 +1,4 @@
 # ignore for local files
 local/
 .netrwhist
+sessions/
