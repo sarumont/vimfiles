@@ -270,6 +270,18 @@ fu! CodeInit()
 	call s:HighlightLongLines(100)
 endfu
 
+" Sets build variables for Apache ant
+fu! SetAnt()
+	set makeprg=ant\ -q
+	set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+endfu
+
+" Sets build variables for Apache maven
+fu! SetMaven()
+	set makeprg=mvn\ -q
+	set efm=%E\[ERROR\]\ %f:[%l\\,%c]\ error:\ %m,%-G%.%#
+endfu
+
 " omnicomplete (javacomplete)
 imap <Nul> <Space>
 let NERDTreeWinSize=42
