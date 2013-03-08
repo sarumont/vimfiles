@@ -38,10 +38,6 @@
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 	ignore = untracked
-[submodule "bundle/ultisnips"]
-	path = bundle/ultisnips
-	url = git://github.com/rygwdn/ultisnips.git
-	ignore = untracked
 [submodule "bundle/scratch"]
 	path = bundle/scratch
 	url = git://github.com/vim-scripts/scratch.vim.git
