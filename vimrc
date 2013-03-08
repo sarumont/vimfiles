@@ -2,8 +2,7 @@
 :filetype off
 
 " Pathogen to manage packages/plugins
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+exec pathogen#infect()
 
 " misc
 :autocmd!
