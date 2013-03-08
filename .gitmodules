@@ -79,6 +79,3 @@
 [submodule "bundle/webapi-vim"]
 	path = bundle/webapi-vim
 	url = git://github.com/mattn/webapi-vim.git
-[submodule "bundle/UltiSnips"]
-	path = bundle/UltiSnips
-	url = git://github.com/vim-scripts/UltiSnips.git
