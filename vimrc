@@ -82,7 +82,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " paren matching
 :set showmatch
 :set matchtime=1
-hi MatchParen ctermbg=5
+hi MatchParen ctermbg=63
 
 " title string
 "set titlestring=vim\ %<%F%(\ %)%m%h%w%=%l/%L-%P
