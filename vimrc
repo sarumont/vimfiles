@@ -20,7 +20,7 @@ let mapleader = ","
 let g:mapleader = ","
 set hidden
 set wildmenu
-set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo
+set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff
 set undofile
 
 set background=dark
@@ -100,10 +100,6 @@ endif
 " Indention
 set autoindent
 filetype plugin indent on
-
-" Java building
-autocmd BufRead *.java set makeprg=ant\ -q
-autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
 " easy quickfix nav
 :map <Leader>e :cn<cr>zz<cr>:set cursorline<cr>:sleep 100m<cr>:set nocursorline<cr>:cc<cr>
@@ -278,7 +274,7 @@ endfu
 " Sets build variables for Apache maven
 fu! SetMaven()
 	set makeprg=mvn\ -q
-	set efm=%E\[ERROR\]\ %f:[%l\\,%c]\ error:\ %m,%-G%.%#
+	set efm=%E\[ERROR\]\ %f:\[%l\\,%c\]\ %m,%-G%.%#
 endfu
 
 " omnicomplete (javacomplete)
