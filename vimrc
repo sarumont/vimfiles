@@ -285,9 +285,6 @@ let NERDTreeHighlightCursorline=0
 """"" Autocommands 
 :au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
 
-" Laszlo javascript highlighting
-:au BufRead,BufNewFile *.lzx call TextEnableCodeSnip( 'javascript', '<!\[CDATA\[', '\]\]>', 'SpecialComment' )
-
 " trailing space highlighting
 :au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
 :au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.py :call CodeInit()
