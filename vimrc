@@ -265,16 +265,37 @@ fu! CodeInit()
 	call s:HighlightLongLines(100)
 endfu
 
+"set efm=%E\[ERROR\]\ %f:\[%l\],			" maven
+			"\ %c\]\ %m,
+			"\ %-G%.%#%Z,
+			"\ \[ERROR\] %f:\[%l\] %m,
+			"\ %-G\[debug\] debug contextualize
+			"\ %A\ %#[javac]\ %f:%l:\ %m,	" ant
+			"\ %-Z\ %#[javac]\ %p^,
+			"\ %-C%.%#
+
 " Sets build variables for Apache ant
 fu! SetAnt()
 	set makeprg=ant\ -q
-	set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+	set efm=
+				\%A\ %#\[javac\]\ %f:%l:\ %m,
+				\%-Z\ %#\[javac\]\ %p^,
+				\%-C%.%#
 endfu
 
 " Sets build variables for Apache maven
 fu! SetMaven()
 	set makeprg=mvn\ -q
-	set efm=%E\[ERROR\]\ %f:\[%l\\,%c\]\ %m,%-G%.%#
+	set efm=
+				\[%tARNING]\ %f:[%l\\,%c]\ %m,
+				\%E[ERROR]\ %f:[%l\\,%c]\ %m,
+				\%Csymbol\ %#:\ %.%#\ %m,
+				\%Zlocation\ %#:\ %.%#,
+				\%C[ERROR]\ symbol\ %#:\ %.%#\ %m,
+				\%Z[ERROR]\ location\ %#:\ %.%#,
+				\%-Z%.%#,
+				\[ERROR]\ %f:[%l]\ %m,
+				\%-G%.%#,
 endfu
 
 " omnicomplete (javacomplete)
