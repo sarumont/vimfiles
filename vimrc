@@ -265,22 +265,15 @@ fu! CodeInit()
 	call s:HighlightLongLines(100)
 endfu
 
-"set efm=%E\[ERROR\]\ %f:\[%l\],			" maven
-			"\ %c\]\ %m,
-			"\ %-G%.%#%Z,
-			"\ \[ERROR\] %f:\[%l\] %m,
-			"\ %-G\[debug\] debug contextualize
-			"\ %A\ %#[javac]\ %f:%l:\ %m,	" ant
-			"\ %-Z\ %#[javac]\ %p^,
-			"\ %-C%.%#
-
 " Sets build variables for Apache ant
 fu! SetAnt()
 	set makeprg=ant\ -q
 	set efm=
 				\%A\ %#\[javac\]\ %f:%l:\ %m,
+				\%C\ %#[javac]\ symbol\ %#:\ %.%#\ %m,
+				\%C\ %#[javac]\ location\ %#:\ %.%#,
 				\%-Z\ %#\[javac\]\ %p^,
-				\%-C%.%#
+				\%-G%.%#
 endfu
 
 " Sets build variables for Apache maven
