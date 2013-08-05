@@ -354,5 +354,7 @@ function! LoadSession()
   endif
 endfunction
 
-au VimEnter * nested :call LoadSession()
-au VimLeave * :call MakeSession()
+if ! has( "gui_running" )
+	au VimEnter * nested :call LoadSession()
+	au VimLeave * :call MakeSession()
+endif
