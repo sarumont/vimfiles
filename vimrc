@@ -20,7 +20,7 @@ let mapleader = ","
 let g:mapleader = ","
 set hidden
 set wildmenu
-set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff
+set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*
 set undofile
 
 set background=dark
