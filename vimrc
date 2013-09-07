@@ -26,7 +26,7 @@ set undofile
 set background=dark
 let g:zenburn_high_Contrast = 1
 let g:zenburn_old_Visual = 1
-colorscheme zenburn
+colorscheme ir_black
 
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir=war --ignore-dir=release"
@@ -105,8 +105,6 @@ filetype plugin indent on
 :map <Leader>e :cn<cr>zz<cr>:set cursorline<cr>:sleep 100m<cr>:set nocursorline<cr>:cc<cr>
 :map <Leader>p :cp<cr>
 :map <Leader>l :clist<cr>
-
-:cmap bk BookmarkToRoot 
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -358,3 +356,5 @@ if ! has( "gui_running" )
 	au VimEnter * nested :call LoadSession()
 	au VimLeave * :call MakeSession()
 endif
+
+:let g:airline_powerline_fonts = 1
