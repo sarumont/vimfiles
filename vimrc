@@ -357,4 +357,4 @@ if ! has( "gui_running" )
 	au VimLeave * :call MakeSession()
 endif
 
-:let g:airline_powerline_fonts = 1
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
