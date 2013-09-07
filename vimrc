@@ -28,6 +28,9 @@ let g:zenburn_high_Contrast = 1
 let g:zenburn_old_Visual = 1
 colorscheme ir_black
 
+" powerline
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir=war --ignore-dir=release"
 :nnoremap <silent> <Leader>a :Ack 
@@ -356,5 +359,3 @@ if ! has( "gui_running" )
 	au VimEnter * nested :call LoadSession()
 	au VimLeave * :call MakeSession()
 endif
-
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
