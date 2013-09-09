@@ -176,14 +176,11 @@ hi link rubyConstant          Type
 " Special for Java
 " hi link javaClassDecl    Type
 hi link javaScopeDecl         Identifier 
-hi link javaCommentTitle      javaDocSeeTag 
-hi link javaDocTags           javaDocSeeTag 
-hi link javaDocParam          javaDocSeeTag 
 hi link javaDocSeeTagParam    javaDocSeeTag 
-
 hi javaDocSeeTag              guifg=#CCCCCC     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi javaDocSeeTag              guifg=#CCCCCC     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-"hi javaClassDecl              guifg=#CCFFCC     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
+hi javaCommentTitle           guifg=#EEEEEE     guibg=NONE        gui=NONE      ctermfg=gray        ctermbg=NONE        cterm=NONE
+hi javaDocTags                guifg=black       guibg=NONE        gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
+hi javaDocParam               guifg=#EEEEEE     guibg=NONE        gui=NONE      ctermfg=gray        ctermbg=NONE        cterm=NONE
 
 
 " Special for XML
