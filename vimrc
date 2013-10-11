@@ -384,3 +384,12 @@ function! MavenBuild(clean)
 	exe "make " . l:args
 endfunction
 
+:map <leader>ab :call AntBuild(0)<cr>
+:map <leader>clab :call AntBuild(1)<cr>
+function! AntBuild(clean)
+	call SetAnt()
+	if a:clean
+		exec "make -s clean"
+	endif
+	exec "make -s"
+endfunction
