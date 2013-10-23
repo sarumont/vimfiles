@@ -21,7 +21,7 @@ let mapleader = ","
 let g:mapleader = ","
 set hidden
 set wildmenu
-set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*
+set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4
 set undofile
 
 set background=dark
@@ -330,6 +330,7 @@ au BufNewFile,BufRead *.less set filetype=less
 source ~/.vim/bundle/vim-multiple-monitors/multimonitor.vim
 
 " session management
+set sessionoptions=blank,buffers,curdir,tabpages,winpos,folds
 function! MakeSession()
   if ! exists("v:servername")
   	return
