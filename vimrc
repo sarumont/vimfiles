@@ -274,6 +274,8 @@ fu! SetAnt()
 				\%A\ %#\[javac\]\ %f:%l:\ %m,
 				\%C\ %#[javac]\ symbol\ %#:\ %.%#\ %m,
 				\%C\ %#[javac]\ location\ %#:\ %.%#,
+				\%C\ %#[javac]\ required\ %#:\ %m,
+				\%C\ %#[javac]\ found\ %#:\ %m,
 				\%-Z\ %#\[javac\]\ %p^,
 				\%-G%.%#
 endfu
