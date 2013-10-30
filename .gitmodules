@@ -30,10 +30,6 @@
 	path = bundle/gist-vim
 	url = git://github.com/mattn/gist-vim.git
 	ignore = untracked
-[submodule "bundle/vimoutliner"]
-	path = bundle/vimoutliner
-	url = git://github.com/vimoutliner/vimoutliner.git
-	ignore = untracked
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
