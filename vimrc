@@ -25,8 +25,6 @@ set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.p
 set undofile
 
 set background=dark
-let g:zenburn_high_Contrast = 1
-let g:zenburn_old_Visual = 1
 colorscheme ir_black
 
 " powerline
