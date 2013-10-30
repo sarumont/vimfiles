@@ -397,3 +397,10 @@ function! AntBuild(clean)
 	endif
 	exec "make -s"
 endfunction
+
+let g:easytags_python_enabled=1
+let g:easytags_auto_highlight=0
+
+:map <leader>tl :TlistToggle
+
+let g:notes_directories = ['~/ownCloud/notes']

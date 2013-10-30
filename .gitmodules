@@ -91,3 +91,15 @@
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+[submodule "bundle/vim-easytags"]
+	path = bundle/vim-easytags
+	url = git@github.com:xolox/vim-easytags.git
+[submodule "bundle/vim-misc"]
+	path = bundle/vim-misc
+	url = git@github.com:xolox/vim-misc.git
+[submodule "bundle/vim-taglist"]
+	path = bundle/vim-taglist
+	url = git@github.com:vim-scripts/taglist.vim.git
+[submodule "bundle/vim-notes"]
+	path = bundle/vim-notes
+	url = git@github.com:xolox/vim-notes.git
