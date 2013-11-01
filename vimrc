@@ -397,4 +397,4 @@ function! AntBuild(clean)
 endfunction
 
 :map <leader>tl :TlistToggle
-let g:notes_directories = ['~/ownCloud/notes']
+let g:notes_directories = ['~/Dropbox/notes']
