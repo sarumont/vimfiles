@@ -286,8 +286,11 @@ fu! SetMaven()
 				\%E[ERROR]\ %f:[%l\\,%c]\ %m,
 				\%Csymbol\ %#:\ %.%#\ %m,
 				\%Zlocation\ %#:\ %.%#,
-				\%C[ERROR]\ symbol\ %#:\ %.%#\ %m,
-				\%Z[ERROR]\ location\ %#:\ %.%#,
+				\%C[ERROR]\ symbol\ %#:\ %#%m,
+				\%Z[ERROR]\ location\ %#:\ %#%m,
+				\%C[ERROR]\ %#required:\ %#%m,
+				\%Z[ERROR]\ found:\ %#%m,
+				\%Z\ %#found:\ %#%m,
 				\%-Z%.%#,
 				\[ERROR]\ %f:[%l]\ %m,
 				\%-G%.%#,
@@ -397,4 +400,4 @@ function! AntBuild(clean)
 endfunction
 
 :map <leader>tl :TlistToggle
-let g:notes_directories = ['~/Dropbox/notes']
+let g:notes_directories = ['~/ownCloud/notes']
