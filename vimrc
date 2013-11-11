@@ -21,7 +21,7 @@ let mapleader = ","
 let g:mapleader = ","
 set hidden
 set wildmenu
-set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4
+set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4,*/target/*
 set undofile
 
 set background=dark
@@ -286,8 +286,8 @@ fu! SetMaven()
 				\%E[ERROR]\ %f:[%l\\,%c]\ %m,
 				\%Csymbol\ %#:\ %.%#\ %m,
 				\%Zlocation\ %#:\ %.%#,
-				\%C[ERROR]\ symbol\ %#:\ %#%m,
-				\%Z[ERROR]\ location\ %#:\ %#%m,
+				\%C[ERROR]\ symbol\ %#:\ %.%# %m,
+				\%Z[ERROR]\ location\ %#:\ %.%# %m,
 				\%C[ERROR]\ %#required:\ %#%m,
 				\%Z[ERROR]\ found:\ %#%m,
 				\%Z\ %#found:\ %#%m,
