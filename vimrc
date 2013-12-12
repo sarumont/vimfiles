@@ -176,7 +176,7 @@ set tags=~/.tags
 " folding 
 set nofen
 "set fdl=1
-"set foldmethod=indent
+set foldmethod=indent
 "set foldlevelstart=1
 "set foldlevel=1
 "set foldminlines=5
@@ -269,11 +269,12 @@ endfu
 fu! SetAnt()
 	set makeprg=ant\ -q
 	set efm=
+				\%E\ %#\[javac\]\ %f:%l:\ error:\ %m,
 				\%A\ %#\[javac\]\ %f:%l:\ %m,
 				\%C\ %#[javac]\ symbol\ %#:\ %.%#\ %m,
 				\%C\ %#[javac]\ location\ %#:\ %.%#,
-				\%C\ %#[javac]\ required\ %#:\ %m,
-				\%C\ %#[javac]\ found\ %#:\ %m,
+				\%C\ %#[javac]\ required:\ %#%m,
+				\%C\ %#[javac]\ found:\ %#%m,
 				\%-Z\ %#\[javac\]\ %p^,
 				\%-G%.%#
 endfu
