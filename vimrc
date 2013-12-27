@@ -142,6 +142,7 @@ autocmd BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
 
 " Scratch
 :nnoremap <silent> <Leader>s :Sscratch<cr>
+:nnoremap <silent> <Leader>d ^wiDONE <esc>
 
 " YankRing
 :nnoremap <silent> <Leader>yr :YRShow<cr>
@@ -271,12 +272,12 @@ fu! SetAnt()
 	set efm=
 				\%E\ %#\[javac\]\ %f:%l:\ error:\ %m,
 				\%A\ %#\[javac\]\ %f:%l:\ %m,
-				\%C\ %#[javac]\ symbol\ %#:\ %.%#\ %m,
-				\%C\ %#[javac]\ location\ %#:\ %.%#,
-				\%C\ %#[javac]\ required:\ %#%m,
-				\%C\ %#[javac]\ found:\ %#%m,
-				\%-Z\ %#\[javac\]\ %p^,
-				\%-G%.%#
+				\%C\ %#[javac]\ %p^,
+				\%C\ %#[javac]\.%#symbol\ %#:\ %.%#\ %m,
+				\%C\ %#[javac]\.%#location\ %#:\ %.%#,
+				\%C\ %#[javac]\.%#required:\ %#%m,
+				\%C\ %#[javac]\.%#found:\ %#%m,
+				\%-C%.%#
 endfu
 
 " Sets build variables for Apache maven
