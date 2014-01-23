@@ -315,7 +315,7 @@ au BufNewFile,BufRead *.less set filetype=less
 
 " When editing a file, always jump to the last cursor position
 :au BufReadPost *
-			\ if &ft == 'gitcommit' |
+			\ if &ft == 'gitcommit' || &ft == 'mail' |
 			\   exe "normal! gg" |
 			\   exe "startinsert" |
 			\ elseif line("'\"") > 1 && line ("'\"") <= line("$") |
