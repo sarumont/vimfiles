@@ -268,16 +268,12 @@ endfu
 
 " Sets build variables for Apache ant
 fu! SetAnt()
-	set makeprg=ant\ -q
+	set makeprg=ant\ -e\ -q
 	set efm=
-				\%E\ %#\[javac\]\ %f:%l:\ error:\ %m,
-				\%A\ %#\[javac\]\ %f:%l:\ %m,
-				\%C\ %#[javac]\ %p^,
-				\%C\ %#[javac]\.%#symbol\ %#:\ %.%#\ %m,
-				\%C\ %#[javac]\.%#location\ %#:\ %.%#,
-				\%C\ %#[javac]\.%#required:\ %#%m,
-				\%C\ %#[javac]\.%#found:\ %#%m,
-				\%-C%.%#
+				\%E%f:%l:\ error:\ %m,
+				\%C%p^,
+				\%C\ %#%m,
+				\%-G%.%#
 endfu
 
 " Sets build variables for Apache maven
