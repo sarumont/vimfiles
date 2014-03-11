@@ -304,7 +304,7 @@ let NERDTreeHighlightCursorline=0
 
 " trailing space highlighting
 :au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
-:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.py :call CodeInit()
+:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :call CodeInit()
 
 " lesscss
 au BufNewFile,BufRead *.less set filetype=less
