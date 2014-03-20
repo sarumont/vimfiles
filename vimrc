@@ -399,3 +399,4 @@ endfunction
 
 :map <leader>tl :TlistToggle
 let g:notes_directories = ['~/ownCloud/notes']
+let g:delimitMate_expand_space = 1
