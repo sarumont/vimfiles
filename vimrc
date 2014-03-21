@@ -363,38 +363,39 @@ if ! has( "gui_running" )
 	au VimLeave * :call MakeSession()
 endif
 
-" building random things with maven
-:map <leader>b :call MavenBuild(0)<cr>
-:map <leader>clb :call MavenBuild(1)<cr>
-function! MavenBuild(clean)
+" Build the closest project to the current file with ant or maven
+:map <leader>b :call Build(0)<cr>
+:map <leader>clb :call Build(1)<cr>
+function! Build(clean)
 	let l:dir = expand('%:p:h')
 	let l:pom = l:dir . "/pom.xml"
-	while ! filereadable(l:pom)
+	let l:ant = l:dir . "/build.xml"
+	while ! filereadable(l:pom) && ! filereadable(l:ant)
 		let l:dir = fnamemodify(l:dir, ':h')
 		if 1 == strlen(l:dir)
-			echo "Could not find pom.xml"
+			echo "Could not find pom.xml or build.xml"
 			return
 		endif
 		let l:pom = l:dir . "/pom.xml"
+		let l:ant = l:dir . "/build.xml"
 	endwhile
-	call SetMaven()
 
-	let l:args = "-f " . l:pom 
+	if filereadable(l:pom)
+		call SetMaven()
+		let l:args = "-f " . l:pom 
+		let l:target = "compile"
+	else
+		call SetAnt();
+		let l:args = "-s " . l:ant 
+		let l:target = ""
+	endif
+
 	if a:clean
 		let l:args = l:args . " clean"
 	endif
-	let l:args = l:args . " compile"
-	exe "make " . l:args
-endfunction
 
-:map <leader>ab :call AntBuild(0)<cr>
-:map <leader>clab :call AntBuild(1)<cr>
-function! AntBuild(clean)
-	call SetAnt()
-	if a:clean
-		exec "make -s clean"
-	endif
-	exec "make -s"
+	let l:args = l:args . " " . l:target
+	exe "make " . l:args
 endfunction
 
 :map <leader>tl :TlistToggle
