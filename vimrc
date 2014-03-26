@@ -8,7 +8,6 @@ exec pathogen#infect()
 " misc
 :autocmd!
 :set t_Co=256
-:syntax on
 :filetype plugin on
 :filetype plugin indent on
 :set viminfo='100,\"50,:20
@@ -24,132 +23,93 @@ set wildmenu
 set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4
 set undofile
 
+
+" Colors {{{
 set background=dark
+syntax enable
 colorscheme ir_black
 
-" powerline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
-" ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column --smart-case --ignore-dir=war --ignore-dir=release"
-:nnoremap <silent> <Leader>a :Ack 
-
-" fugitive
-:nnoremap <silent> <Leader>gd :Gdiff<cr>
-:nnoremap <silent> <Leader>gl :Glog<cr>
-:nnoremap <silent> <Leader>gs :Gstatus<cr>
-:nnoremap <silent> <Leader>gb :Gblame<cr>
-:nnoremap <silent> <Leader>gc :Gcommit<cr>
-:nnoremap <silent> <Leader>GC :Git svn dcommit<cr>
-:nnoremap <silent> <Leader>GR :Git svn rebase<cr>:CommandTFlush<cr>
-:nnoremap <silent> <Leader>amend :Git commit --amend<cr>
-:nnoremap <silent> <Leader>stash :Git stash<cr>
-:nnoremap <silent> <Leader>pop :Git stash pop<cr>
-
-" Gist
-let g:gist_clip_command = 'xclip -selection clipboard'
-
-
-" JDK switching
-:nnoremap <silent> <Leader>jdk6 :let $JAVA_HOME = '/usr/lib/jvm/java-6-openjdk-i386'<cr>
-:nnoremap <silent> <Leader>jdk7 :let $JAVA_HOME = '/usr/lib/jvm/java-7-openjdk-i386'<cr>
-
-" gundo
-:nnoremap <silent> <leader>gun :GundoToggle<cr>
-
-" Command-T
-nnoremap <silent> <Leader><Leader> :CommandT<CR>
-nnoremap <silent> <Leader>ctf :CommandTFlush<CR>
-let g:CommandTAcceptSelectionSplitMap=['<C-g>', '<C-o>']
-let g:CommandTMaxFiles=1000000
-
-" Search
-:set nohlsearch
-:set incsearch
-:set ignorecase
-:set smartcase
-
-" MultipleSearch
-:nmap <C-_> :Search 
-:nmap <C-Bslash> :SearchReset<cr>
-:let g:MultipleSearchColorSequence="232,232,232,232"
-:let g:MultipleSearchTextColorSequence="51,105,199,228"
-
-" UtilSnip
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"] 
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-
-" paren matching
-:set showmatch
-:set matchtime=1
+hi CtrlPMatch ctermfg=green
+hi CursorLine ctermbg=0
+hi LongLines term=standout ctermfg=red cterm=underline
 hi MatchParen ctermbg=63
+" }}}
+
+" UI {{{
+set cursorline
+set showmatch
+set matchtime=1
 
 " title string
-"set titlestring=vim\ %<%F%(\ %)%m%h%w%=%l/%L-%P
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
 set titlelen=70
 if &term == "screen"
 	set t_ts=k
 	set t_fs=\
-
 endif
 if &term == "screen" || &term == "xterm" 
 	set title
 endif
+" }}}
 
-" Indention
-set autoindent
-filetype plugin indent on
+" CtrlP {{{
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" }}}
 
-" easy quickfix nav
-:map <Leader>e :cn<cr>zz<cr>:set cursorline<cr>:sleep 100m<cr>:set nocursorline<cr>:cc<cr>
-:map <Leader>p :cp<cr>
-:map <Leader>l :clist<cr>
+" powerline
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+" Searching {{{
+set nohlsearch
+set incsearch
+set ignorecase
+set smartcase
 
-" tab spacing
-:set shiftwidth=4
-:set tabstop=4
-:set softtabstop=4
-:set noexpandtab
+let g:agprg="ag --nocolor --nogroup --column --smart-case"
+" }}}
 
-" SQL shit
-let g:omni_sql_no_default_maps = 1
+" Key mappings {{{
+nnoremap <silent> <Leader><Leader> :CtrlP<cr>
 
-" Java shit
-let java_allow_cpp_keywords=1
-let java_highlight_all=1
-let java_minlines=50
-autocmd BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
+nnoremap <silent> <Leader>a :Ag 
 
-" window navigation
-:nmap <silent> <C-h> :wincmd h<CR>
-:nmap <silent> <C-j> :wincmd j<CR>
-:nmap <silent> <C-k> :wincmd k<CR>
-:nmap <silent> <C-l> :wincmd l<CR>
+" git
+nnoremap <silent> <Leader>gd :Gdiff<cr>
+nnoremap <silent> <Leader>gl :Glog<cr>
+nnoremap <silent> <Leader>gs :Gstatus<cr>
+nnoremap <silent> <Leader>gb :Gblame<cr>
+nnoremap <silent> <Leader>gc :Gcommit<cr>
+nnoremap <silent> <Leader>GC :Git svn dcommit<cr>
+nnoremap <silent> <Leader>GR :Git svn rebase<cr>:CommandTFlush<cr>
+nnoremap <silent> <Leader>amend :Git commit --amend<cr>
+nnoremap <silent> <Leader>stash :Git stash<cr>
+nnoremap <silent> <Leader>pop :Git stash pop<cr>
 
-" mouse
-:set mouse=nv
-:set mousehide
+" java
+nnoremap <silent> <Leader>jdk6 :let $JAVA_HOME = '/usr/lib/jvm/java-6-oracle'<cr>
+nnoremap <silent> <Leader>jdk7 :let $JAVA_HOME = '/usr/lib/jvm/java-7-oracle'<cr>
+nnoremap <silent> <Leader>jdk8 :let $JAVA_HOME = '/usr/lib/jvm/java-8-oracle'<cr>
 
-""""""""""""""""""""""""""""""""""""""""
-" keymappings
-""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <Leader>gun :GundoToggle<cr>
 
 " Scratch
-:nnoremap <silent> <Leader>s :Sscratch<cr>
-:nnoremap <silent> <Leader>d ^wiDONE <esc>
+nnoremap <silent> <Leader>s :Sscratch<cr>
+
+" vim-notes
+nnoremap <silent> <Leader>d ^wiDONE <esc>
 
 " YankRing
-:nnoremap <silent> <Leader>yr :YRShow<cr>
-:let g:yankring_history_file='.yankring_history'
+nnoremap <silent> <Leader>yr :YRShow<cr>
+
+" Windows 
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-l> :wincmd l<CR>
 
 ":cmap bc Bclose
-:map <silent> <leader>w :set cursorline<cr>:sleep 250m<cr>:set nocursorline<cr>
 :map <F5> :set paste!<cr>
 :map <F6> :set spell!<cr>
 :map <Leader>h :set hlsearch!<cr>
@@ -160,6 +120,49 @@ autocmd BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
 
 :map <C-Tab> :tabnext<cr>
 :map <C-S-Tab> :tabprev<cr>
+" }}}
+
+" Gist {{{
+let g:gist_clip_command = 'xclip -selection clipboard'
+" }}}
+
+" Snippets {{{
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"] 
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
+
+
+" Quickfix {{{
+:map <Leader>e :cn<cr>zz<cr>
+:map <Leader>p :cp<cr>
+:map <Leader>l :clist<cr>
+" }}}
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" Indentation {{{
+set autoindent
+filetype plugin indent on
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set noexpandtab
+" }}}
+
+" Java {{{
+let java_allow_cpp_keywords=1
+let java_highlight_all=1
+let java_minlines=50
+autocmd BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
+"}}}
+
+" mouse
+:set mouse=nv
+:set mousehide
+:let g:yankring_history_file='.yankring_history'
+
 
 " Status line
 set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
@@ -167,88 +170,18 @@ set laststatus=2
 "hi StatusLine cterm=none ctermfg=15 ctermbg=11
 "hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
 
-" current/cursor line
-hi CursorLine cterm=none ctermbg=15
-set nocursorline
-
 " tags
 set tags=~/.tags
 
-" folding 
-set nofen
-"set fdl=1
-set foldmethod=indent
-"set foldlevelstart=1
-"set foldlevel=1
-"set foldminlines=5
-"function! JavaFold()
-
-	"setl foldmethod=syntax
-	"setl foldlevelstart=1
-
-	"syn clear javaBraces
-	"syn clear javaDocComment
-
-	"" set up folding for brace-delimited blocks, javadoc and imports
-	"syn region javaBraces start="{" end="}" transparent fold
-	"syn region javaDocComment start="/\*\*" end="\*/" keepend contains=javaCommentTitle,@javaHtml,javaDocTags,javaDocSeeTag,javaTodo,@Spell fold
-	"syn match foldImports /\(\n\?import.\+;\n\)\+/ transparent fold
-
-	"" add number of lines folded to the fold's text
-	"function! Num2S(num, len)
-		"let filler = "                                                            "
-		"let text = '' . a:num
-		"return strpart(filler, 1, a:len - strlen(text)) . text
-	"endfunction
-
-	"function! FoldText()
-		"let sub = substitute(getline(v:foldstart), '/\*\|\*/\|{{{\d\=', '', 'g')
-		"let diff = v:foldend - v:foldstart + 1
-		"return  '+' . v:folddashes . '[' . Num2S(diff,3) . ']' . sub
-	"endfunction
-	"setl foldtext=FoldText()
-
-"endfunction
-""au FileType java call JavaFold()
-"au FileType java setl fen
-"hi Folded ctermfg=27 ctermbg=232
-
-" vim-outliner
-" TODO - try to switch back to old FT? 
-"  let old_ft=:filetype 
-:map <F12> :set ft=vo_base<cr>
-
-" Function for enabling embedded syntax highlighting.  Usage: 
-"	:call TextEnableCodeSnip( 'javascript', '<!\[CDATA\[', '\]\]>', 'SpecialComment' )
-"
-function! TextEnableCodeSnip( filetype, start, end, textSnipHl ) abort
-  let ft=toupper(a:filetype)
-  let group='textGroup'.ft
-  if exists('b:current_syntax')
-    let s:current_syntax=b:current_syntax
-    " Remove current syntax definition, as some syntax files (e.g. cpp.vim)
-    " do nothing if b:current_syntax is defined.
-    unlet b:current_syntax
-  endif
-  execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
-  try
-    execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
-  catch
-  endtry
-  if exists('s:current_syntax')
-    let b:current_syntax=s:current_syntax
-  else
-    unlet b:current_syntax
-  endif
-  execute 'syntax region textSnip'.ft.'
-  \ matchgroup='.a:textSnipHl.'
-  \ start="'.a:start.'" end="'.a:end.'"
-  \ contains=@'.group
-endfunction
+" Folding {{{
+set foldmethod=syntax
+set foldnestmax=10
+set foldenable
+set foldlevelstart=1
+" }}}}
 
 "define :HighlightLongLines command to highlight the offending parts of
 "lines that are longer than the specified length (defaulting to 80)
-hi LongLines term=standout ctermfg=red cterm=underline
 fu! s:HighlightLongLines(width)
 	let targetWidth = a:width != '' ? a:width : 100
 	if targetWidth > 0
@@ -300,17 +233,17 @@ let NERDTreeWinSize=42
 let NERDTreeHighlightCursorline=0
 
 """"" Autocommands 
-:au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
+au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
 
 " trailing space highlighting
-:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
-:au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :call CodeInit()
+au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
+au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :call CodeInit()
 
 " lesscss
 au BufNewFile,BufRead *.less set filetype=less
 
 " When editing a file, always jump to the last cursor position
-:au BufReadPost *
+au BufReadPost *
 			\ if &ft == 'gitcommit' || &ft == 'mail' |
 			\   exe "normal! gg" |
 			\   exe "startinsert" |
@@ -319,18 +252,15 @@ au BufNewFile,BufRead *.less set filetype=less
 			\ endif
 
 " DETECT FILE CHANGED, DAMMIT 
-:au CursorHold *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
-:au CursorHoldI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
-:au CursorMoved *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
-:au CursorMovedI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
-:au InsertEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode 
-:au FocusGained *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after gaining focus (usually doesn't work) 
-:au WinEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode
+au CursorHold *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
+au CursorHoldI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
+au CursorMoved *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
+au CursorMovedI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
+au InsertEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode 
+au FocusGained *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after gaining focus (usually doesn't work) 
+au WinEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode
 
-" multimon support
-source ~/.vim/bundle/vim-multiple-monitors/multimonitor.vim
-
-" session management
+" session management {{{
 set sessionoptions=blank,buffers,curdir,tabpages,winpos,folds
 function! MakeSession()
   if ! exists("v:servername")
@@ -362,6 +292,7 @@ if ! has( "gui_running" )
 	au VimEnter * nested :call LoadSession()
 	au VimLeave * :call MakeSession()
 endif
+"}}}
 
 " Build the closest project to the current file with ant or maven
 :map <leader>b :call Build(0)<cr>
@@ -387,7 +318,7 @@ function! Build(clean)
 	else
 		call SetAnt();
 		let l:args = "-s " . l:ant 
-		let l:target = ""
+		let l:target = "build"
 	endif
 
 	if a:clean
