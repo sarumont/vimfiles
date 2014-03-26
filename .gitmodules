@@ -46,9 +46,6 @@
 	path = bundle/localrc
 	url = git://github.com/thinca/vim-localrc.git
 	ignore = untracked
-[submodule "bundle/vim-multiple-monitors"]
-	path = bundle/vim-multiple-monitors
-	url = git@github.com:sarumont/vim-multiple-monitors.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
