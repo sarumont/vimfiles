@@ -46,10 +46,6 @@
 	path = bundle/localrc
 	url = git://github.com/thinca/vim-localrc.git
 	ignore = untracked
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = git://github.com/wincent/Command-T.git
-	ignore = untracked
 [submodule "bundle/vim-multiple-monitors"]
 	path = bundle/vim-multiple-monitors
 	url = git@github.com:sarumont/vim-multiple-monitors.git
@@ -63,9 +59,6 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule "bundle/ack"]
-	path = bundle/ack
-	url = git://github.com/mileszs/ack.vim.git
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = git://github.com/sjl/gundo.vim.git
