@@ -1,20 +1,22 @@
-:set encoding=utf-8
-:set nocompatible
-:filetype off
+" init {{{
+set encoding=utf-8
+set nocompatible
+"}}}
 
-" Pathogen to manage packages/plugins
+" Pathogen {{{
+filetype off
 exec pathogen#infect()
+"}}}
 
-" misc
-:autocmd!
-:set t_Co=256
-:filetype plugin on
-:filetype plugin indent on
-:set viminfo='100,\"50,:20
-:set formatoptions=croql
-:set autowrite
-:set textwidth=100
-:set bs=2
+" misc {{{
+autocmd!
+set t_Co=256
+filetype plugin on
+set viminfo='100,\"50,:20
+set formatoptions=croql
+set autowrite
+set textwidth=100
+set bs=2
 set so=7
 let mapleader = ","
 let g:mapleader = ","
@@ -22,6 +24,7 @@ set hidden
 set wildmenu
 set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4
 set undofile
+" }}}
 
 
 " Colors {{{
@@ -333,3 +336,5 @@ endfunction
 let g:notes_directories = ['~/ownCloud/notes']
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
+
+" vim:foldmethod=marker:foldlevel=0
