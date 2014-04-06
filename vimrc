@@ -24,8 +24,15 @@ set hidden
 set wildmenu
 set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4
 set undofile
-" }}}
 
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+let g:yankring_history_file='.yankring_history'
+
+let g:notes_directories = ['~/ownCloud/notes']
+
+" }}}
 
 " Colors {{{
 set background=dark
@@ -39,7 +46,11 @@ hi MatchParen ctermbg=63
 " }}}
 
 " UI {{{
-set cursorline
+augroup CursorLine
+	au!
+	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+	au WinLeave * setlocal nocursorline
+augroup END
 set showmatch
 set matchtime=1
 
@@ -61,8 +72,15 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " }}}
 
-" powerline
+" Status line / powerline {{{
+set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
+set laststatus=2
+"hi StatusLine cterm=none ctermfg=15 ctermbg=11
+"hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
+
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set laststatus=2
+"}}}
 
 " Searching {{{
 set nohlsearch
@@ -77,6 +95,8 @@ let g:agprg="ag --nocolor --nogroup --column --smart-case"
 nnoremap <silent> <Leader><Leader> :CtrlP<cr>
 
 nnoremap <silent> <Leader>a :Ag 
+
+map <leader>tl :TlistToggle
 
 " git
 nnoremap <silent> <Leader>gd :Gdiff<cr>
@@ -135,15 +155,11 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
 
-
 " Quickfix {{{
-:map <Leader>e :cn<cr>zz<cr>
+:map <Leader>e :cn<cr>zz<cr>:cc<cr>zv
 :map <Leader>p :cp<cr>
 :map <Leader>l :clist<cr>
 " }}}
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
 
 " Indentation {{{
 set autoindent
@@ -161,20 +177,10 @@ let java_minlines=50
 autocmd BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
 "}}}
 
-" mouse
+" mouse {{{
 :set mouse=nv
 :set mousehide
-:let g:yankring_history_file='.yankring_history'
-
-
-" Status line
-set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
-set laststatus=2
-"hi StatusLine cterm=none ctermfg=15 ctermbg=11
-"hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
-
-" tags
-set tags=~/.tags
+"}}}
 
 " Folding {{{
 set foldmethod=syntax
@@ -216,7 +222,7 @@ endfu
 fu! SetMaven()
 	set makeprg=mvn\ -q
 	set efm=
-				\[%tARNING]\ %f:[%l\\,%c]\ %m,
+				\%W[WARNING]\ %f:[%l\\,%c]\ %m,
 				\%E[ERROR]\ %f:[%l\\,%c]\ %m,
 				\%C\ %#symbol:\ %.%#\ %m,
 				\%Z\ %#location:\ %.%#,
@@ -297,6 +303,7 @@ if ! has( "gui_running" )
 endif
 "}}}
 
+" Building {{{
 " Build the closest project to the current file with ant or maven
 :map <leader>b :call Build(0)<cr>
 :map <leader>clb :call Build(1)<cr>
@@ -331,10 +338,11 @@ function! Build(clean)
 	let l:args = l:args . " " . l:target
 	exe "make " . l:args
 endfunction
+"}}}
 
-:map <leader>tl :TlistToggle
-let g:notes_directories = ['~/ownCloud/notes']
+" DelimitMate {{{
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
+"}}}
 
 " vim:foldmethod=marker:foldlevel=0
