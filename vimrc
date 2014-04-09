@@ -32,6 +32,8 @@ let g:yankring_history_file='.yankring_history'
 
 let g:notes_directories = ['~/ownCloud/notes']
 
+au CursorHold,CursorHoldI,WinEnter,BufWinEnter * checktime
+
 " }}}
 
 " Colors {{{
@@ -260,14 +262,6 @@ au BufReadPost *
 			\   exe "normal! g`\"" |
 			\ endif
 
-" DETECT FILE CHANGED, DAMMIT 
-au CursorHold *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
-au CursorHoldI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after inactivity for a while 
-au CursorMoved *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
-au CursorMovedI *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after moving 
-au InsertEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode 
-au FocusGained *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after gaining focus (usually doesn't work) 
-au WinEnter *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.py,*.less,*.css checktime " check file timestamp after entering insert mode
 
 " session management {{{
 set sessionoptions=blank,buffers,curdir,tabpages,winpos,folds
