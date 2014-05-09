@@ -5,7 +5,7 @@ set nocompatible
 
 " Pathogen {{{
 filetype off
-exec pathogen#infect()
+exec pathogen#infect('bundle/{}', 'bundle.local/{}')
 "}}}
 
 " misc {{{
