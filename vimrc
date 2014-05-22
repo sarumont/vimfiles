@@ -50,8 +50,8 @@ hi MatchParen ctermbg=63
 " UI {{{
 augroup CursorLine
 	au!
-	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline colorcolumn=+1
-	au WinLeave * setlocal nocursorline colorcolumn=""
+	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+	au WinLeave * setlocal nocursorline
 augroup END
 set showmatch
 set matchtime=1
@@ -191,11 +191,23 @@ set foldenable
 set foldlevelstart=1
 " }}}}
 
+"define :HighlightLongLines command to highlight the offending parts of
+"lines that are longer than the specified length (defaulting to 80)
+fu! s:HighlightLongLines(width)
+	let targetWidth = a:width != '' ? a:width : 100
+	if targetWidth > 0
+		exec 'match LongLines /\%>' . (targetWidth) . 'v/'
+	else
+		echomsg "Usage: HighlightLongLines [natural number]"
+	endif
+endfunction
+
 fu! CodeInit()
 	set noexpandtab
 	set shiftwidth=4
 	set tabstop=4
 	set softtabstop=4
+	call s:HighlightLongLines(100)
 endfu
 
 " Sets build variables for Apache ant
