@@ -98,3 +98,6 @@
 [submodule "bundle/vim-qargs"]
 	path = bundle/vim-qargs
 	url = https://github.com/nelstrom/vim-qargs.git
+[submodule "bundle/SlateDark"]
+	path = bundle/SlateDark
+	url = https://github.com/vim-scripts/SlateDark
