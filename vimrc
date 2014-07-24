@@ -98,7 +98,7 @@ nnoremap <silent> <Leader><Leader> :CtrlP<cr>
 
 nnoremap <silent> <Leader>a :Ag 
 
-map <leader>tl :TlistToggle
+map <leader>tl :TlistToggle<cr>
 
 " git
 nnoremap <silent> <Leader>gd :Gdiff<cr>
