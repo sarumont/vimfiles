@@ -135,12 +135,8 @@ nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
 ":cmap bc Bclose
-nnoremap <F5>:set paste!<cr>o
-nnoremap <silent> <Leader>pp :set paste<cr>o
-augroup PasteMode
-    au!
-    au InsertLeave * set nopaste
-augroup END
+nnoremap <silent> <Leader>pp :set paste<cr>$:r ! xclip -o<cr>:set nopaste<cr>$
+nnoremap <silent> <Leader>pv :set paste<cr>$:r ! xclip -selection clipboard -o<cr>:set nopaste<cr>$
 
 :map <F6> :set spell!<cr>
 :map <Leader>h :set hlsearch!<cr>
