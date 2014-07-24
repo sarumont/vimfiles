@@ -135,7 +135,13 @@ nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
 ":cmap bc Bclose
-:map <F5> :set paste!<cr>
+nnoremap <F5>:set paste!<cr>o
+nnoremap <silent> <Leader>pp :set paste<cr>o
+augroup PasteMode
+    au!
+    au InsertLeave * set nopaste
+augroup END
+
 :map <F6> :set spell!<cr>
 :map <Leader>h :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
