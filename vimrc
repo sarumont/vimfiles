@@ -225,6 +225,16 @@ fu! SetAnt()
 				\%-G%.%#
 endfu
 
+" Sets build variables for gradle
+fu! SetGradle()
+	set makeprg=gradle\ --daemon\ --quiet
+	set efm=
+				\%E%f:%l:\ error:\ %m,
+				\%C%p^,
+				\%C\ %#%m,
+				\%-G%.%#
+endfu
+
 " Sets build variables for Apache maven
 fu! SetMaven()
 	set makeprg=mvn\ -q
@@ -310,23 +320,29 @@ function! Build(clean)
 	let l:dir = expand('%:p:h')
 	let l:pom = l:dir . "/pom.xml"
 	let l:ant = l:dir . "/build.xml"
-	while ! filereadable(l:pom) && ! filereadable(l:ant)
+	let l:gradle = l:dir . "/build.gradle"
+	while ! filereadable(l:pom) && ! filereadable(l:ant) && ! filereadable(l:gradle)
 		let l:dir = fnamemodify(l:dir, ':h')
 		if 1 == strlen(l:dir)
-			echo "Could not find pom.xml or build.xml"
+			echo "Could not find pom.xml, build.xml, or build.gradle"
 			return
 		endif
 		let l:pom = l:dir . "/pom.xml"
 		let l:ant = l:dir . "/build.xml"
+		let l:gradle = l:dir . "/build.gradle"
 	endwhile
 
 	if filereadable(l:pom)
 		call SetMaven()
 		let l:args = "-f " . l:pom 
 		let l:target = "compile"
-	else
+	else if filereadable(l:ant)
 		call SetAnt();
 		let l:args = "-s " . l:ant 
+		let l:target = "build"
+	else
+		call SetGradle();
+		let l:args = "-b " . l:gradle 
 		let l:target = "build"
 	endif
 
