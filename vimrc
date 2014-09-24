@@ -96,7 +96,7 @@ let g:agprg="ag --nocolor --nogroup --column --smart-case"
 " Key mappings {{{
 nnoremap <silent> <Leader><Leader> :CtrlP<cr>
 
-nnoremap <silent> <Leader>a :Ag 
+nnoremap <silent> <Leader>a :Ag! 
 
 map <leader>tl :TlistToggle<cr>
 
