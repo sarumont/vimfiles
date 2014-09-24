@@ -336,7 +336,7 @@ function! Build(clean)
 		call SetMaven()
 		let l:args = "-f " . l:pom 
 		let l:target = "compile"
-	else if filereadable(l:ant)
+	elseif filereadable(l:ant)
 		call SetAnt();
 		let l:args = "-s " . l:ant 
 		let l:target = "build"
