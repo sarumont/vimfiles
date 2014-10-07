@@ -215,6 +215,7 @@ fu! CodeInit()
 	call s:HighlightLongLines(100)
 endfu
 
+" Building {{{
 " Sets build variables for Apache ant
 fu! SetAnt()
 	set makeprg=ant\ -e\ -q
@@ -229,6 +230,7 @@ endfu
 fu! SetGradle()
 	set makeprg=gradle\ --daemon\ --quiet
 	set efm=
+				\%W%f:%l:\ warning:\ %m,
 				\%E%f:%l:\ error:\ %m,
 				\%C%p^,
 				\%C\ %#%m,
@@ -252,6 +254,7 @@ fu! SetMaven()
 				\[ERROR]\ %f:[%l]\ %m,
 				\%-G%.%#,
 endfu
+" }}}}
 
 " omnicomplete (javacomplete)
 imap <Nul> <Space>
