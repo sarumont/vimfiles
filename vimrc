@@ -324,28 +324,34 @@ function! Build(clean)
 	let l:pom = l:dir . "/pom.xml"
 	let l:ant = l:dir . "/build.xml"
 	let l:gradle = l:dir . "/build.gradle"
-	while ! filereadable(l:pom) && ! filereadable(l:ant) && ! filereadable(l:gradle)
+	let l:gradle_settings = l:dir . "/settings.gradle"
+	while ! filereadable(l:pom) && ! filereadable(l:ant) && ! filereadable(l:gradle) && ! filereadable(l:gradle_settings)
 		let l:dir = fnamemodify(l:dir, ':h')
 		if 1 == strlen(l:dir)
-			echo "Could not find pom.xml, build.xml, or build.gradle"
+			echo "Could not find pom.xml, build.xml, build.gradle, or settings.gradle"
 			return
 		endif
 		let l:pom = l:dir . "/pom.xml"
 		let l:ant = l:dir . "/build.xml"
 		let l:gradle = l:dir . "/build.gradle"
+		let l:gradle_settings = l:dir . "/settings.gradle"
 	endwhile
 
 	if filereadable(l:pom)
 		call SetMaven()
 		let l:args = "-f " . l:pom 
 		let l:target = "compile"
+	elseif filereadable(l:gradle_settings)
+		call SetGradle();
+		let l:args = "-b " . l:gradle_settings 
+		let l:target = "build"
+	elseif filereadable(l:gradle)
+		call SetGradle();
+		let l:args = "-b " . l:gradle 
+		let l:target = "build"
 	elseif filereadable(l:ant)
 		call SetAnt();
 		let l:args = "-s " . l:ant 
-		let l:target = "build"
-	else
-		call SetGradle();
-		let l:args = "-b " . l:gradle 
 		let l:target = "build"
 	endif
 
