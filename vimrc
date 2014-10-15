@@ -80,7 +80,14 @@ set laststatus=2
 "hi StatusLine cterm=none ctermfg=15 ctermbg=11
 "hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
 
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+if has("unix")
+	let s:uname = system("echo -n \"$(uname)\"")
+	if s:uname == "Darwin"
+		set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
+	else
+		set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+	endif
+endif
 set laststatus=2
 "}}}
 
