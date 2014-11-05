@@ -227,6 +227,9 @@ fu! CodeInit()
 	set tabstop=4
 	set softtabstop=4
 	call s:HighlightLongLines(100)
+	if exists("g:has_local_codeinit")
+		call LocalCodeInit()
+	endif
 endfu
 
 " Building {{{
