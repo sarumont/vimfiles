@@ -171,7 +171,7 @@ let g:gist_update_on_write = 2
 " }}}
 
 " Snippets {{{
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"] 
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets", "local/snippets"] 
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
