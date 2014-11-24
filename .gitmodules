@@ -101,3 +101,6 @@
 [submodule "bundle/SlateDark"]
 	path = bundle/SlateDark
 	url = https://github.com/vim-scripts/SlateDark
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
