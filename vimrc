@@ -278,8 +278,9 @@ imap <Nul> <Space>
 let NERDTreeWinSize=42
 let NERDTreeHighlightCursorline=0
 
-""""" Autocommands 
+" Autocommands {{{
 au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
+au FileType xjb set filetype=xml
 
 " trailing space highlighting
 au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
@@ -296,6 +297,7 @@ au BufReadPost *
 			\ elseif line("'\"") > 1 && line ("'\"") <= line("$") |
 			\   exe "normal! g`\"" |
 			\ endif
+"}}}
 
 
 " session management {{{
