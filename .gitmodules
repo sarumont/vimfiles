@@ -104,3 +104,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/vim-expand-region"]
+	path = bundle/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region.git
