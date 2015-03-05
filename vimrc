@@ -45,6 +45,7 @@ hi CtrlPMatch ctermfg=green
 hi CursorLine ctermbg=0
 hi LongLines term=standout ctermfg=red cterm=underline
 hi MatchParen ctermbg=63
+hi Folded ctermbg=234 ctermfg=238
 " }}}
 
 " UI {{{
@@ -195,7 +196,8 @@ set noexpandtab
 let java_allow_cpp_keywords=1
 let java_highlight_all=1
 let java_minlines=50
-autocmd BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
+autocmd BufNewFile,BufRead *.java nnoremap <silent> <Leader>o o@Override<esc>
+autocmd BufNewFile,BufRead *.java nnoremap <silent> <Leader>u o@author <C-R>=g:author_name<C-M><esc>
 "}}}
 
 " mouse {{{
@@ -388,4 +390,14 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 "}}}
 
+"{{{ Variable definitions
+if has("unix")
+	let s:uname = system("echo -n \"$(uname)\"")
+	if s:uname == "Darwin"
+		let g:author_name = system("finger `whoami` | awk -F: '{ print $3 }' | head -n1 | sed 's/^ //'")
+	else
+		let g:author_name = system("getent passwd $USER | cut -d ':' -f 5 | cut -d ',' -f 1")
+	endif
+endif
+"}}}
 " vim:foldmethod=marker:foldlevel=0
