@@ -107,3 +107,6 @@
 [submodule "bundle/vim-expand-region"]
 	path = bundle/vim-expand-region
 	url = https://github.com/terryma/vim-expand-region.git
+[submodule "bundle/vim-tasklist"]
+	path = bundle/vim-tasklist
+	url = git@github.com:vim-scripts/TaskList.vim.git
