@@ -110,3 +110,6 @@
 [submodule "bundle/vim-tasklist"]
 	path = bundle/vim-tasklist
 	url = git@github.com:vim-scripts/TaskList.vim.git
+[submodule "bundle/cSyntaxAfter"]
+	path = bundle/cSyntaxAfter
+	url = git@github.com:sarumont/cSyntaxAfter.git
