@@ -113,3 +113,6 @@
 [submodule "bundle/cSyntaxAfter"]
 	path = bundle/cSyntaxAfter
 	url = git@github.com:sarumont/cSyntaxAfter.git
+[submodule "bundle/vim-easytags"]
+	path = bundle/vim-easytags
+	url = https://github.com/xolox/vim-easytags.git
