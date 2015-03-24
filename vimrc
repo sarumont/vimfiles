@@ -42,7 +42,7 @@ syntax enable
 colorscheme jellybeans
 
 hi CtrlPMatch ctermfg=green
-hi CursorLine ctermbg=0
+hi CursorLine ctermbg=236
 hi LongLines term=standout ctermfg=red cterm=underline
 hi MatchParen ctermbg=63
 hi Folded ctermbg=234 ctermfg=238
