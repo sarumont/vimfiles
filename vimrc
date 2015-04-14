@@ -339,7 +339,7 @@ endif
 " Building {{{
 " Build the closest project to the current file with ant or maven
 :map <leader>b :call Build(0)<cr>
-:map <leader>clb :call Build(1)<cr>
+:map <leader>clb :call Build(1)<cr>:call Build(0)<cr>
 function! Build(clean)
 	let l:dir = expand('%:p:h')
 	let l:pom = l:dir . "/pom.xml"
@@ -361,26 +361,20 @@ function! Build(clean)
 	if filereadable(l:pom)
 		call SetMaven()
 		let l:args = "-f " . l:pom 
-		let l:target = "compile"
 	elseif filereadable(l:gradle_settings)
 		call SetGradle();
 		let l:args = "-b " . l:gradle_settings 
-		let l:target = "build"
 	elseif filereadable(l:gradle)
 		call SetGradle();
 		let l:args = "-b " . l:gradle 
-		let l:target = "build"
 	elseif filereadable(l:ant)
 		call SetAnt();
 		let l:args = "-s " . l:ant 
-		let l:target = "build"
 	endif
 
 	if a:clean
 		let l:args = l:args . " clean"
 	endif
-
-	let l:args = l:args . " " . l:target
 	exe "make " . l:args
 endfunction
 "}}}
