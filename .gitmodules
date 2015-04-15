@@ -1,5 +1,5 @@
 [submodule "snippets"]
-	path = snippets
+	path = my-snippets
 	url = git@github.com:sarumont/vim-snippets.git
 	ignore = untracked
 [submodule "bundle/nerdtree"]
