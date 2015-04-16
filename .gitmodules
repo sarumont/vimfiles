@@ -119,3 +119,6 @@
 [submodule "bundle/vim-velocity"]
 	path = bundle/vim-velocity
 	url = https://github.com/lepture/vim-velocity.git
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = git@github.com:honza/vim-snippets.git
