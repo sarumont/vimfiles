@@ -30,7 +30,7 @@ map Q gq
 
 let g:yankring_history_file='.yankring_history'
 
-let g:notes_directories = ['~/ownCloud/notes']
+let g:notes_directories = ['~/files/notes']
 
 au CursorHold,CursorHoldI,WinEnter,BufWinEnter * checktime
 
@@ -281,7 +281,7 @@ let NERDTreeWinSize=42
 let NERDTreeHighlightCursorline=0
 
 " Autocommands {{{
-au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
+"au FileType xhtml,htm,html,dtd,xml,xml2,xsd,ant set shiftwidth=2 tabstop=2
 au FileType xjb set filetype=xml
 
 " trailing space highlighting
