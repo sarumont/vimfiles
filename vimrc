@@ -189,7 +189,7 @@ filetype plugin indent on
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set noexpandtab
+set expandtab
 " }}}
 
 " Java {{{
@@ -224,7 +224,7 @@ fu! s:HighlightLongLines(width)
 endfunction
 
 fu! CodeInit()
-	set noexpandtab
+	set expandtab
 	set shiftwidth=4
 	set tabstop=4
 	set softtabstop=4
