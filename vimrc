@@ -39,7 +39,7 @@ au CursorHold,CursorHoldI,WinEnter,BufWinEnter * checktime
 " Colors {{{
 set background=dark
 syntax enable
-colorscheme jellybeans
+colorscheme Tomorrow-Night
 
 hi CtrlPMatch ctermfg=green
 hi CursorLine ctermbg=236
