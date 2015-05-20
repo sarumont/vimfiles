@@ -125,3 +125,6 @@
 [submodule "bundle/closetag"]
 	path = bundle/closetag
 	url = git@github.com:vim-scripts/closetag.vim.git
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = git@github.com:honza/vim-snippets.git
