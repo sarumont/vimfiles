@@ -1,0 +1,8 @@
+" Searching {{{
+set nohlsearch
+set incsearch
+set ignorecase
+set smartcase
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
