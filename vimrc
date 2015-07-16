@@ -258,7 +258,7 @@ endfu
 
 " Sets build variables for Apache maven
 fu! SetMaven()
-	set makeprg=mvn\ -q
+	set makeprg=mvn\ -q\ -Djava.awt.headless=true
 	set efm=
 				\%W[WARNING]\ %f:[%l\\,%c]\ %m,
 				\%E[ERROR]\ %f:[%l\\,%c]\ %m,
