@@ -30,7 +30,7 @@ map Q gq
 
 let g:yankring_history_file='.yankring_history'
 
-let g:notes_directories = ['~/files/notes']
+let g:notes_directories = ['~/notes']
 
 au CursorHold,CursorHoldI,WinEnter,BufWinEnter * checktime
 
