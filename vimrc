@@ -147,6 +147,7 @@ if has("unix")
 	let s:uname = system("echo -n \"$(uname)\"")
 	if s:uname == "Darwin"
 		nnoremap <silent> <Leader>pp :set paste<cr>$:r ! pbpaste <cr>:set nopaste<cr>$
+		vnoremap <silent> <Leader>yy :.w !pbcopy<cr>
 	else
 		nnoremap <silent> <Leader>pp :set paste<cr>$:r ! xclip -o<cr>:set nopaste<cr>$
 		nnoremap <silent> <Leader>pv :set paste<cr>$:r ! xclip -selection clipboard -o<cr>:set nopaste<cr>$
