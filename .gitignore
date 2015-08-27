@@ -1,5 +1,6 @@
 # ignore for local files
+.netrwhist
 bundle.local/
 local/
-.netrwhist
+notes
 sessions/
