@@ -213,6 +213,15 @@ set foldenable
 set foldlevelstart=1
 " }}}}
 
+" Syntax checking {{{
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = '/usr/local/bin/eslint'
+" }}}}
+
 "define :HighlightLongLines command to highlight the offending parts of
 "lines that are longer than the specified length (defaulting to 80)
 fu! s:HighlightLongLines(width)
