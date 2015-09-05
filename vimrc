@@ -220,6 +220,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = '/usr/local/bin/eslint'
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_html_tidy_blocklevel_tags = ['ion-view', 'ion-content', 'ion-list', 'ion-item', 'ion-option-button', 'i']
 " }}}}
 
 "define :HighlightLongLines command to highlight the offending parts of
