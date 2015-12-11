@@ -5,4 +5,8 @@ set ignorecase
 set smartcase
 " }}}
 
+" Clipboard {{{
+set clipboard+=unnamed
+" }}}
+
 " vim:foldmethod=marker:foldlevel=0
