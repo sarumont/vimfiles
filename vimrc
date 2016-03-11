@@ -109,6 +109,8 @@ nnoremap <silent> <Leader>a :Ag!
 map <leader>tl :TlistToggle<cr>
 
 " git
+nnoremap <silent> <Leader>mc I:twisted_rightwards_arrows: <esc>
+
 nnoremap <silent> <Leader>gd :Gdiff<cr>
 nnoremap <silent> <Leader>gl :Glog<cr>
 nnoremap <silent> <Leader>gs :Gstatus<cr>
