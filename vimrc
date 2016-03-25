@@ -39,7 +39,8 @@ au CursorHold,CursorHoldI,WinEnter,BufWinEnter * checktime
 " Colors {{{
 set background=dark
 syntax enable
-colorscheme Tomorrow-Night
+colorscheme base16-tomorrow
+let base16colorspace=256
 
 hi CtrlPMatch ctermfg=green
 hi CursorLine ctermbg=236
