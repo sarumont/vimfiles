@@ -9,4 +9,9 @@ set smartcase
 set clipboard+=unnamed
 " }}}
 
+" Stupid bell {{{
+set visualbell
+set noerrorbells
+" }}}
+
 " vim:foldmethod=marker:foldlevel=0
