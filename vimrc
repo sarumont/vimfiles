@@ -157,6 +157,8 @@ if has("unix")
 	endif
 endif
 
+nnoremap <silent> <Leader>jpp :%!python -m json.tool<cr>
+
 :map <F6> :set spell!<cr>
 :map <Leader>h :set hlsearch!<cr>
 :map <F8> :set wrap!<cr>
