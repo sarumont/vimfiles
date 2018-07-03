@@ -22,7 +22,7 @@ let mapleader = ","
 let g:mapleader = ","
 set hidden
 set wildmenu
-set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4
+set wildignore=*/generated/*,.git,*.pyc,.svn,*.jar,*.class,*.un~,*.swp,*.swo,*.png,*.jpg,*.ttf,*.woff,*/javadoc/*,*.gif,*.ogg,*.mp3,*.mp4,*/node_modules/*
 set undofile
 
 " Don't use Ex mode, use Q for formatting
@@ -224,7 +224,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = '/usr/local/bin/eslint'
+let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_html_tidy_blocklevel_tags = ['ion-view', 'ion-content', 'ion-list', 'ion-item', 'ion-option-button', 'i']
 " }}}}
@@ -240,14 +240,14 @@ fu! s:HighlightLongLines(width)
 	endif
 endfunction
 
-fu! CodeInit()
+fu! CodeInit(tabLength)
 	set expandtab
-	set shiftwidth=4
-	set tabstop=4
-	set softtabstop=4
+	execute "set shiftwidth=".a:tabLength
+	execute "set tabstop=".a:tabLength
+	execute "set softtabstop=".a:tabLength
 	call s:HighlightLongLines(100)
 	if exists("g:has_local_codeinit")
-		call LocalCodeInit()
+		call LocalCodeInit(a:tabLength)
 	endif
 endfu
 
@@ -303,7 +303,8 @@ au FileType xjb set filetype=xml
 
 " trailing space highlighting
 au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js,*.html,*.htm,*.xml,*.lzx let w:m1=matchadd( 'Error', '\s\{2,}$', -1)
-au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp,*.js :call CodeInit()
+au BufWinEnter,BufRead,BufNewFile *.java,*.c,*.cpp :call CodeInit(4)
+au BufWinEnter,BufRead,BufNewFile *.js,*.json :call CodeInit(2)
 
 " lesscss
 au BufNewFile,BufRead *.less set filetype=less
