@@ -87,7 +87,7 @@ if has("unix")
 	if s:uname == "Darwin"
 		set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 	else
-		set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+		set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 	endif
 endif
 set laststatus=2
