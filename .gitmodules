@@ -30,10 +30,6 @@
 	path = bundle/gist-vim
 	url = git://github.com/mattn/gist-vim.git
 	ignore = untracked
-[submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-	ignore = untracked
 [submodule "bundle/scratch"]
 	path = bundle/scratch
 	url = git://github.com/vim-scripts/scratch.vim.git
@@ -59,18 +55,12 @@
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = git://github.com/sjl/gundo.vim.git
-[submodule "bundle/zenburn"]
-	path = bundle/zenburn
-	url = git@github.com:sarumont/Zenburn.git
 [submodule "bundle/webapi-vim"]
 	path = bundle/webapi-vim
 	url = git://github.com/mattn/webapi-vim.git
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = git://github.com/vim-scripts/UltiSnips.git
-[submodule "bundle/molokai"]
-	path = bundle/molokai
-	url = git@github.com:vim-scripts/molokai.git
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline
@@ -95,9 +85,6 @@
 [submodule "bundle/vim-qargs"]
 	path = bundle/vim-qargs
 	url = https://github.com/nelstrom/vim-qargs.git
-[submodule "bundle/SlateDark"]
-	path = bundle/SlateDark
-	url = https://github.com/vim-scripts/SlateDark
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -128,12 +115,12 @@
 [submodule "bundle/vim-mustache-handlebars"]
 	path = bundle/vim-mustache-handlebars
 	url = https://github.com/mustache/vim-mustache-handlebars.git
-[submodule "bundle/base16"]
-	path = bundle/base16
-	url = https://github.com/chriskempson/base16-vim.git
 [submodule "bundle/base16-vim"]
 	path = bundle/base16-vim
 	url = https://github.com/chriskempson/base16-vim.git
 [submodule "bundle/typescript-vim"]
 	path = bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/onedark"]
+	path = bundle/onedark
+	url = https://github.com/joshdick/onedark.vim.git
