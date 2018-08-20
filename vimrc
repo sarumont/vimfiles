@@ -37,10 +37,17 @@ au CursorHold,CursorHoldI,WinEnter,BufWinEnter * checktime
 " }}}
 
 " Colors {{{
+
+" 24-bit color hacks for tmux
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
 set background=dark
 syntax enable
-colorscheme base16-tomorrow
 let base16colorspace=256
+"colorscheme base16-tomorrow-night
+colorscheme onedark
 
 hi CtrlPMatch ctermfg=green
 hi CursorLine ctermbg=236
