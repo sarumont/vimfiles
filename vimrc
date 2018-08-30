@@ -83,21 +83,18 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " }}}
 
-" Status line / powerline {{{
-set statusline=%t%m%r%h%w\ [%{&ff}\ \|\ %04l,%04v\ (%p%%)\ \|\ lines:\ %L]\ %{fugitive#statusline()}
-set laststatus=2
-"hi StatusLine cterm=none ctermfg=15 ctermbg=11
-"hi StatusLineNC cterm=none ctermfg=0 ctermbg=11
+" Status line {{{
 
-if has("unix")
-	let s:uname = system("echo -n \"$(uname)\"")
-	if s:uname == "Darwin"
-		set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
-	else
-		set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
-	endif
-endif
+" Airline
+"let g:airline_powerline_fonts = 1
+"let g:airline_theme='onedark'
+
+" Lightline
 set laststatus=2
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 "}}}
 
 " Searching {{{

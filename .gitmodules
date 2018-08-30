@@ -61,9 +61,6 @@
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = git://github.com/vim-scripts/UltiSnips.git
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = https://github.com/bling/vim-airline
 [submodule "bundle/vim-taglist"]
 	path = bundle/vim-taglist
 	url = git@github.com:vim-scripts/taglist.vim.git
@@ -124,3 +121,6 @@
 [submodule "bundle/onedark"]
 	path = bundle/onedark
 	url = https://github.com/joshdick/onedark.vim.git
+[submodule "bundle/lightline.vim"]
+	path = bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
