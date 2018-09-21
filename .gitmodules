@@ -124,3 +124,6 @@
 [submodule "bundle/lightline.vim"]
 	path = bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+[submodule "bundle/jsdoc-syntax"]
+	path = bundle/jsdoc-syntax
+	url = https://github.com/othree/jsdoc-syntax.vim.git
