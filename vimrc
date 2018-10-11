@@ -113,6 +113,15 @@ nnoremap <silent> <Leader>a :Ag!
 
 map <leader>tl :TlistToggle<cr>
 
+" easymotion
+let g:EasyMotion_smartcase = 1
+nmap f <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader> <Plug>(easymotion-prefix)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
 " git
 nnoremap <silent> <Leader>mc I:twisted_rightwards_arrows: <esc>
 
@@ -126,11 +135,6 @@ nnoremap <silent> <Leader>GR :Git svn rebase<cr>:CommandTFlush<cr>
 nnoremap <silent> <Leader>amend :Git commit --amend<cr>
 nnoremap <silent> <Leader>stash :Git stash<cr>
 nnoremap <silent> <Leader>pop :Git stash pop<cr>
-
-" java
-nnoremap <silent> <Leader>jdk6 :let $JAVA_HOME = '/usr/lib/jvm/java-6-oracle'<cr>
-nnoremap <silent> <Leader>jdk7 :let $JAVA_HOME = '/usr/lib/jvm/java-7-oracle'<cr>
-nnoremap <silent> <Leader>jdk8 :let $JAVA_HOME = '/usr/lib/jvm/java-8-oracle'<cr>
 
 nnoremap <silent> <Leader>gun :GundoToggle<cr>
 
@@ -161,7 +165,7 @@ if has("unix")
 	endif
 endif
 
-nnoremap <silent> <Leader>jpp :%!python -m json.tool<cr>
+nnoremap <silent> <Leader><C-j> :%!python -m json.tool<cr>
 
 :map <F6> :set spell!<cr>
 :map <Leader>h :set hlsearch!<cr>

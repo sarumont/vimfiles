@@ -127,3 +127,6 @@
 [submodule "bundle/jsdoc-syntax"]
 	path = bundle/jsdoc-syntax
 	url = https://github.com/othree/jsdoc-syntax.vim.git
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
